@@ -19,7 +19,7 @@ const Home: NextPage = () => {
       <ComponentsProvider>
       <main className={styles.main}>
           <div className={styles.menu}>
-              { componentsList.map(component => <DraggableComponent id={component.id} name={component.name} />)}
+              { componentsList.map((component, idx) => <DraggableComponent id={component.id} name={component.name} key={idx} />)}
           </div>
           <Preview/>
           <div className={styles.panel}></div>

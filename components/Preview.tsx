@@ -10,6 +10,10 @@ import Alert from "./previews/Alert";
 import Checkbox from "./previews/Checkbox";
 import Toggle from "./previews/Toggle";
 import Input from "./previews/Input";
+import Loader from "./previews/Loader";
+import Menu from "./previews/Menu";
+import Modal from "./previews/Modal";
+import Popover from "./previews/Popover";
 
 import PreviewContainer from "./PreviewContainer";
 
@@ -21,6 +25,10 @@ const PreviewComponents = {
     Checkbox,
     Toggle,
     Input,
+    Loader,
+    Menu,
+    Modal,
+    Popover,
 };
 
 export default function Preview() {
@@ -48,6 +56,7 @@ export default function Preview() {
 
   const clickHandler = useCallback(
     (index) => {
+        console.log(index);
       if (focused === index) setFocused(null);
       setFocused(index);
     },
@@ -66,6 +75,7 @@ export default function Preview() {
             ...component.props,
           }
         );
+
         return React.createElement(
           PreviewContainer,
           {
@@ -77,6 +87,7 @@ export default function Preview() {
         );
       }
     });
+
   return (
     <Box
       ref={drop}
