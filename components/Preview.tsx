@@ -5,45 +5,22 @@ import { DRAG_TYPES } from "../constants/DragTypes";
 import { useComponents } from "../contexts/ComponentsContext";
 import ComponentName from "../components/ComponentName";
 import Button from "./previews/Button";
-import {
-    DropdownButton,
-    Drawer,
-    Input,
-    MultiSelectDropdown,
-    Checkbox,
-    Confirmation,
-    Dropdown,
-    Loader,
-    Menu,
-    Modal,
-    Popover,
-    Radio,
-    Tabs,
-    Toast,
-    Toggle,
-    Tooltip,
-} from "@freshworks/react-nucleus";
+import ButtonDropdown from "./previews/ButtonDropdown";
+import Alert from "./previews/Alert";
+import Checkbox from "./previews/Checkbox";
+import Toggle from "./previews/Toggle";
+import Input from "./previews/Input";
+
 import PreviewContainer from "./PreviewContainer";
 
 const PreviewComponents = {
   ComponentName,
   Button,
-    DropdownButton,
-    Drawer,
-    Input,
-    MultiSelectDropdown,
+    ButtonDropdown,
+    Alert,
     Checkbox,
-    Confirmation,
-    Dropdown,
-    Loader,
-    Menu,
-    Modal,
-    Popover,
-    Radio,
-    Tabs,
-    Toast,
     Toggle,
-    Tooltip,
+    Input,
 };
 
 export default function Preview() {
