@@ -4,10 +4,46 @@ import { useDrop } from "react-dnd";
 import { DRAG_TYPES } from "../constants/DragTypes";
 import { useComponents } from "../contexts/ComponentsContext";
 import ComponentName from "../components/ComponentName";
+import Button from "./previews/Button";
+import {
+    DropdownButton,
+    Drawer,
+    Input,
+    MultiSelectDropdown,
+    Checkbox,
+    Confirmation,
+    Dropdown,
+    Loader,
+    Menu,
+    Modal,
+    Popover,
+    Radio,
+    Tabs,
+    Toast,
+    Toggle,
+    Tooltip,
+} from "@freshworks/react-nucleus";
 import PreviewContainer from "./PreviewContainer";
 
 const PreviewComponents = {
   ComponentName,
+  Button,
+    DropdownButton,
+    Drawer,
+    Input,
+    MultiSelectDropdown,
+    Checkbox,
+    Confirmation,
+    Dropdown,
+    Loader,
+    Menu,
+    Modal,
+    Popover,
+    Radio,
+    Tabs,
+    Toast,
+    Toggle,
+    Tooltip,
 };
 
 export default function Preview() {
@@ -67,7 +103,7 @@ export default function Preview() {
   return (
     <Box
       ref={drop}
-      width="400px"
+      width="100%"
       height="100vh"
       sx={{ border: "1px solid black" }}
     >

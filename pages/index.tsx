@@ -6,6 +6,59 @@ import DraggableComponent from '../components/DraggableComponent'
 import { ComponentsProvider } from '../contexts/ComponentsContext'
 import Preview from '../components/Preview'
 
+const componentsList = [
+    {
+        name: 'Button', id: 'Button'
+    },
+    {
+        name: 'Dropdown Button', id: 'ButtonDropdown'
+    },
+    {
+        name: 'Drawer', id: 'Drawer'
+    },
+    {
+        name: 'Input', id: 'Input'
+    },
+    {
+        name: 'Multi-select Dropdown', id: 'MultiSelectDropdown'
+    },
+    {
+        name: 'Checkbox', id: 'Checkbox'
+    },
+    {
+        name: 'Confirmation', id: 'Confirmation'
+    },
+    {
+        name: 'Dropdown', id: 'Dropdown'
+    },
+    {
+        name: 'Loader', id: 'Loader'
+    },
+    {
+        name: 'Menu', id: 'Menu'
+    },
+    {
+        name: 'Modal', id: 'Modal'
+    },
+    {
+        name: 'Popover', id: 'Popover'
+    },
+    {
+        name: 'Radio', id: 'Radio'
+    },
+    {
+        name: 'Tabs', id: 'Tabs'
+    },
+    {
+        name: 'Toast', id: 'Toast'
+    },
+    {
+        name: 'Toggle', id: 'Toggle'
+    },
+    {
+        name: 'Tooltip', id: 'Tooltip'
+    },
+]
 const Home: NextPage = () => {
   return (
     <div className={styles.container}>
@@ -17,11 +70,11 @@ const Home: NextPage = () => {
 
       <ComponentsProvider>
       <main className={styles.main}>
-          <div>
-              <DraggableComponent />
-              <DraggableComponent bg="red" />
+          <div className={styles.menu}>
+              { componentsList.map(component => <DraggableComponent id={component.id} name={component.name} />)}
           </div>
           <Preview/>
+          <div className={styles.panel}></div>
       </main>
       </ComponentsProvider>
 
