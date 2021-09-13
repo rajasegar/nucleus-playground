@@ -20,15 +20,15 @@ import PreviewContainer from "./PreviewContainer";
 const PreviewComponents = {
   ComponentName,
   Button,
-    ButtonDropdown,
-    Alert,
-    Checkbox,
-    Toggle,
-    Input,
-    Loader,
-    Menu,
-    Modal,
-    Popover,
+  ButtonDropdown,
+  Alert,
+  Checkbox,
+  Toggle,
+  Input,
+  Loader,
+  Menu,
+  Modal,
+  Popover,
 };
 
 export default function Preview() {
@@ -56,7 +56,7 @@ export default function Preview() {
 
   const clickHandler = useCallback(
     (index) => {
-        console.log(index);
+      console.log(index);
       if (focused === index) setFocused(null);
       setFocused(index);
     },
@@ -89,12 +89,7 @@ export default function Preview() {
     });
 
   return (
-    <Box
-      ref={drop}
-      width="100%"
-      height="100vh"
-      sx={{ border: "1px solid black" }}
-    >
+    <Box p={2} ref={drop} width="100%" height="100vh">
       {componentPreview}
     </Box>
   );

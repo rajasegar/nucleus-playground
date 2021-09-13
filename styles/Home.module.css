@@ -10,7 +10,10 @@
 
 .main {
   display: grid;
-  grid-template-columns: 200px 1fr 400px;
+  grid-template-columns: 300px 1fr 400px;
+  background-image: linear-gradient(to right, rgb(217, 226, 233) 1px, transparent 1px), linear-gradient(rgb(217, 226, 233) 1px, transparent 1px);
+background-size: 20px 20px;
+background-color: rgb(237, 242, 246);
 }
 
 .footer {
@@ -116,10 +119,3 @@
   }
 }
 
-.menu {
-  background: papayawhip;
-}
-
-.panel {
-  background: lightblue;
-}
