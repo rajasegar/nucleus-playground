@@ -6,12 +6,16 @@ import { ComponentsProvider } from "../contexts/ComponentsContext";
 import Preview from "../components/Preview";
 import componentsList from "./_componentList";
 import Header from '../components/Header';
+import PropertiesPanel from '../components/PropertiesPanel';
 
+import { useState } from 'react';
 import {  Box  } from "rebass/styled-components";
 import { useTheme } from "@freshworks/react-nucleus";
 
 const Home: NextPage = () => {
 
+    const [current, setCurrent] = useState();
+    
   const theme = useTheme();
   return (
     <div className={styles.container}>
@@ -24,7 +28,7 @@ const Home: NextPage = () => {
       
       <ComponentsProvider>
         <main className={styles.main}>
-          <Box bg={theme.palette.E700} p={2}>
+          <Box bg={theme.palette.E800} p={2}>
             {componentsList.map((component, idx) => (
               <DraggableComponent
                 id={component.id}
@@ -33,11 +37,8 @@ const Home: NextPage = () => {
               />
             ))}
           </Box>
-          <Preview />
-          <Box
-            bg={theme.palette.smoke}
-            sx={{ "border-left": `1px solid ${theme.palette.E500}` }}
-          ></Box>
+          <Preview setCurrent={setCurrent} />
+          <PropertiesPanel current={current} />
         </main>
       </ComponentsProvider>
     </div>

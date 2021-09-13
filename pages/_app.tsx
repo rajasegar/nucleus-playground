@@ -11,21 +11,17 @@ import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 
 function MyApp({ Component, pageProps }: AppProps) {
 
-  const theme = { dir:  'ltr' };
+    const theme = { dir: 'ltr' };
     return (
-
-      <NucleusThemeProvider theme={{}}>
-
-        <NucleusUiProvider>
-
-            <StyledThemeProvider theme={theme}>
-        <DndProvider backend={HTML5Backend}>
-        <Component {...pageProps}/>
-        </DndProvider>
-            </StyledThemeProvider>
-        </NucleusUiProvider>
-      </NucleusThemeProvider>
-        
-  )
+        <NucleusThemeProvider theme={{}}>
+            <NucleusUiProvider>
+                <StyledThemeProvider theme={theme}>
+                    <DndProvider backend={HTML5Backend}>
+                        <Component {...pageProps} />
+                    </DndProvider>
+                </StyledThemeProvider>
+            </NucleusUiProvider>
+        </NucleusThemeProvider>
+    )
 }
 export default MyApp

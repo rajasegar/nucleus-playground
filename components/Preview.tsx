@@ -3,7 +3,6 @@ import { Box } from "rebass/styled-components";
 import { useDrop } from "react-dnd";
 import { DRAG_TYPES } from "../constants/DragTypes";
 import { useComponents } from "../contexts/ComponentsContext";
-import ComponentName from "../components/ComponentName";
 import Button from "./previews/Button";
 import ButtonDropdown from "./previews/ButtonDropdown";
 import Alert from "./previews/Alert";
@@ -18,7 +17,6 @@ import Popover from "./previews/Popover";
 import PreviewContainer from "./PreviewContainer";
 
 const PreviewComponents = {
-  ComponentName,
   Button,
   ButtonDropdown,
   Alert,
@@ -31,7 +29,8 @@ const PreviewComponents = {
   Popover,
 };
 
-export default function Preview() {
+export default function Preview(props) {
+    const { setCurrent } = props;
   const [focused, setFocused] = useState(null);
   const { components, setComponents } = useComponents();
   const [{ isOver, isOverCurrent }, drop] = useDrop({
@@ -46,6 +45,7 @@ export default function Preview() {
         name: item.id,
         props: {},
       };
+        setCurrent(componentStructure);
       setComponents((prevValue) => [...prevValue, componentStructure]);
     },
     collect: (monitor) => ({
@@ -56,7 +56,8 @@ export default function Preview() {
 
   const clickHandler = useCallback(
     (index) => {
-      console.log(index);
+      console.log(components[index]);
+        setCurrent(components[index]);
       if (focused === index) setFocused(null);
       setFocused(index);
     },
@@ -89,7 +90,11 @@ export default function Preview() {
     });
 
   return (
-    <Box p={2} ref={drop} width="100%" height="100vh">
+      <Box p={2} ref={drop} width="100%" height="100vh" sx={{
+  'background-image': 'linear-gradient(to right, rgb(217, 226, 233) 1px, transparent 1px), linear-gradient(rgb(217, 226, 233) 1px, transparent 1px)',
+'background-size': '20px 20px',
+'background-color': 'rgb(237, 242, 246)',
+    }}>
       {componentPreview}
     </Box>
   );

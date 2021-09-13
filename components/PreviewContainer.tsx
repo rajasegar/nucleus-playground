@@ -9,13 +9,12 @@ export default function PreviewContainer({
   ...restProps
 }) {
   const clickHandler = useCallback(() => {
-      console.log(index);
     onClick(index);
   }, [onClick]);
   return (
     <Box
       onClick={clickHandler}
-      sx={{ border: focused && "1px solid blue" }}
+      sx={{ border: focused && "1px dashed black" }}
         key={index}
       {...restProps}
     >
