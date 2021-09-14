@@ -1,10 +1,22 @@
 import React, { useState } from 'react';
 import { Dropdown } from '@freshworks/react-nucleus';
 import { Box } from 'rebass/styled-components';
+import { useComponents } from "../../contexts/ComponentsContext";
 
-export default function() {
+export default function({ current }) {
     const [variant, setVariant] = useState("Primary");
     const [size, setSize] = useState("Normal");
+
+    console.log(current);
+    const { components, setComponents } = useComponents();
+    console.log(components);
+
+    function updateVariant(variant) {
+        const comp = components.find(c => c.id === current.id);
+        comp.props.variant = variant;
+        setVariant(variant);
+        setComponents(components);
+    }
 
     const buttonVariants = [
         {
@@ -38,7 +50,7 @@ export default function() {
                 itemToString={(c) => c.name}
                 defaultSelectedItem={variant}
                 items={buttonVariants}
-                onChange={(c) => setVariant(c)}
+                onChange={(c) => updateVariant(c)}
             />
             <Dropdown
                 filterKey="name"

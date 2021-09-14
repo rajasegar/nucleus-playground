@@ -13,7 +13,7 @@ export default function(props) {
             bg={theme.palette.smoke}
             sx={{ "border-left": `1px solid ${theme.palette.E500}` }}
           >
-              {current && current.name === 'Button' && <ButtonPanel/>}
+              {current && current.name === 'Button' && <ButtonPanel current={current} />}
           </Box>
     );
 }

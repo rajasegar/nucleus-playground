@@ -30,7 +30,7 @@ const PreviewComponents = {
 };
 
 export default function Preview(props) {
-    const { setCurrent } = props;
+  const { setCurrent } = props;
   const [focused, setFocused] = useState(null);
   const { components, setComponents } = useComponents();
   const [{ isOver, isOverCurrent }, drop] = useDrop({
@@ -41,10 +41,12 @@ export default function Preview(props) {
         return;
       }
       console.log("item dropped!", item);
-      const componentStructure = {
-        name: item.id,
-        props: {},
-      };
+        const hash = Math.random().toString(36).replace('0.', '');
+        const componentStructure = {
+            id: `comp-${hash}`,
+            name: item.id,
+            props: {},
+        };
         setCurrent(componentStructure);
       setComponents((prevValue) => [...prevValue, componentStructure]);
     },
