@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {  Box  } from "rebass/styled-components";
 import { useTheme } from "@freshworks/react-nucleus";
 import ButtonPanel from './panels/Button';
+import { ComponentsContext } from '../contexts/ComponentsContext';
 
-export default function(props) {
-    const { current } = props;
-    console.log(current);
+export default function PropertiesPanel() {
+    const [ state, dispatch ] = useContext(ComponentsContext);
+
+    const current = state.components.find(c => c.id === state.selectedId);
 
   const theme = useTheme();
     return (

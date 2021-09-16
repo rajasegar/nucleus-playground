@@ -1,6 +1,6 @@
 import React from 'react';
 import { Flex, Box, Link, Text } from "rebass/styled-components";
-import { useTheme, Toggle, Button, Menu } from "@freshworks/react-nucleus";
+import { useTheme, Toggle, Menu } from "@freshworks/react-nucleus";
 import { useState } from 'react';
 import ChevronDown from "./icons/ChevronDown";
 
@@ -23,13 +23,14 @@ const options = [
   },
 ];
 
+
 const EditorMenu = () => {
     const [show, setShow] = useState(false);
     return (
-        <div style={{ 'margin-left': '8px', position: 'relative' }}>
+        <div style={{ marginLeft: '8px', position: 'relative' }}>
             <Text onClick={() => setShow(!show)} mx={4} sx={{':hover': { cursor: 'pointer' }}}>Editor <ChevronDown/></Text>
             {show && (
-                <div style={{position: 'absolute',}} >
+                <div style={{position: 'absolute'}} >
                     <Menu
                         options={options}
                         onSelect={(v) => alert(v)}
@@ -41,7 +42,7 @@ const EditorMenu = () => {
     );
 }
 
-export default function() {
+export default function Header() {
     
   const theme = useTheme();
     const [builderMode, setBuilderMode] = useState(true);
@@ -63,11 +64,11 @@ export default function() {
    
                     <Box px={4}>
                         Builder mode
-                        <Toggle on={builderMode} size="sm" handleChange={() => setBuilderMode(!builderMode)} style={{ 'vertical-align': 'middle', 'margin-left': '8px' }} />
+                        {/* <Toggle on={builderMode} size="sm" handleChange={() => setBuilderMode(!builderMode)} style={{ 'vertical-align': 'middle', 'margin-left': '8px' }} /> */}
                     </Box>
                     <Box px={4}>
                         Code panel
-                        <Toggle on={codePanel} size="sm" handleChange={() => setcodePanel(!codePanel)} style={{ 'vertical-align': 'middle', 'margin-left': '8px' }} />
+                        {/* <Toggle on={codePanel} size="sm" handleChange={() => setcodePanel(!codePanel)} style={{ 'vertical-align': 'middle', 'margin-left': '8px' }} /> */}
                     </Box>
                 </Flex>
 

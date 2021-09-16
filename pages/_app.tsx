@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
     const theme = { dir: 'ltr' };
     return (
-        <NucleusThemeProvider theme={{}}>
+        <NucleusThemeProvider theme={theme}>
             <NucleusUiProvider>
                 <StyledThemeProvider theme={theme}>
                     <DndProvider backend={HTML5Backend}>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Checkbox } from '@freshworks/react-nucleus';
 
-export default function() {
+export default function CheckboxPreview() {
      const [checked, setChecked] = useState({
          checkA: false,
      });

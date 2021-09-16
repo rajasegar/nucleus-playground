@@ -1,8 +1,8 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useContext } from "react";
 import { Box } from "rebass/styled-components";
 import { useDrop } from "react-dnd";
 import { DRAG_TYPES } from "../constants/DragTypes";
-import { useComponents } from "../contexts/ComponentsContext";
+import { ComponentsContext } from "../contexts/ComponentsContext";
 import Button from "./previews/Button";
 import ButtonDropdown from "./previews/ButtonDropdown";
 import Alert from "./previews/Alert";
@@ -30,9 +30,8 @@ const PreviewComponents = {
 };
 
 export default function Preview(props) {
-  const { setCurrent } = props;
   const [focused, setFocused] = useState(null);
-  const { components, setComponents } = useComponents();
+  const [ state, dispatch ] = useContext(ComponentsContext);
   const [{ isOver, isOverCurrent }, drop] = useDrop({
     accept: DRAG_TYPES.COMPONENT,
     drop(item, monitor) {
@@ -47,8 +46,13 @@ export default function Preview(props) {
             name: item.id,
             props: {},
         };
-        setCurrent(componentStructure);
-      setComponents((prevValue) => [...prevValue, componentStructure]);
+
+        dispatch({
+            type:'ADD_COMPONENT',
+            component: componentStructure,
+            selectedId: componentStructure.id
+        });
+        
     },
     collect: (monitor) => ({
       isOver: monitor.isOver(),
@@ -58,8 +62,15 @@ export default function Preview(props) {
 
   const clickHandler = useCallback(
     (index) => {
-      console.log(components[index]);
-        setCurrent(components[index]);
+        if(state.components[index]) {
+         dispatch({
+            type: 'SELECT_COMPONENT',
+            selectedId: state.components[index].id
+        });
+   
+        }
+
+                
       if (focused === index) setFocused(null);
       setFocused(index);
     },
@@ -67,9 +78,10 @@ export default function Preview(props) {
   );
 
   const componentPreview =
-    components.length > 0 &&
-    components.map((component, index) => {
+    state.components.length > 0 &&
+    state.components.map((component, index) => {
       if (typeof PreviewComponents[component.name] !== "undefined") {
+          debugger;
         const NewComponent = React.createElement(
           PreviewComponents[component.name],
           {

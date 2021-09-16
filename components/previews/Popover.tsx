@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Menu, Popover } from '@freshworks/react-nucleus';
 
-export default function() {
+export default function PopoverPreview() {
     const [anchorEl, setAnchorEl] = useState(null);
 const options = [
   {

@@ -22,7 +22,7 @@ const options = [
     name: "Edit",
   },
 ];
-export default function () {
+export default function ButtonDropdownPreview() {
   return (
     <ButtonDropdown
       id="multi-click"

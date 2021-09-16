@@ -1,21 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Dropdown } from '@freshworks/react-nucleus';
 import { Box } from 'rebass/styled-components';
-import { useComponents } from "../../contexts/ComponentsContext";
+import { ComponentsContext } from "../../contexts/ComponentsContext";
 
-export default function({ current }) {
+export default function ButtonPanel() {
+    const [ state, dispatch ] = useContext(ComponentsContext);
     const [variant, setVariant] = useState("Primary");
     const [size, setSize] = useState("Normal");
 
-    console.log(current);
-    const { components, setComponents } = useComponents();
-    console.log(components);
 
     function updateVariant(variant) {
-        const comp = components.find(c => c.id === current.id);
-        comp.props.variant = variant;
+        const comp = state.components.find(c => c.id === state.selectedId);
+        comp.props.type = variant.name;
+        dispatch({
+            type: 'UPDATE_PROPS',
+            component: comp,
+            selectedId: state.selectedId
+        });
         setVariant(variant);
-        setComponents(components);
+    }
+
+    function updateSize(size) {
+        const comp = state.components.find(c => c.id === state.selectedId);
+        comp.props.size = size.name;
+        dispatch({
+            type: 'UPDATE_PROPS',
+            component: comp,
+            selectedId: state.selectedId
+        });
+        setSize(size);
     }
 
     const buttonVariants = [
@@ -58,7 +71,7 @@ export default function({ current }) {
                 itemToString={(c) => c.name}
                 defaultSelectedItem={size}
                 items={buttonSizes}
-                onChange={(c) => setSize(c)}
+                onChange={(c) => updateSize(c)}
             />
         </Box>
     )

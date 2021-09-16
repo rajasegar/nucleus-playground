@@ -8,14 +8,11 @@ import componentsList from "./_componentList";
 import Header from '../components/Header';
 import PropertiesPanel from '../components/PropertiesPanel';
 
-import { useState } from 'react';
 import {  Box  } from "rebass/styled-components";
 import { useTheme } from "@freshworks/react-nucleus";
 
 const Home: NextPage = () => {
 
-    const [current, setCurrent] = useState();
-    
   const theme = useTheme();
   return (
     <div className={styles.container}>
@@ -37,8 +34,8 @@ const Home: NextPage = () => {
               />
             ))}
           </Box>
-          <Preview setCurrent={setCurrent} />
-          <PropertiesPanel current={current} />
+          <Preview />
+          <PropertiesPanel />
         </main>
       </ComponentsProvider>
     </div>

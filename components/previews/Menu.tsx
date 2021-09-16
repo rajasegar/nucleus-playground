@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Menu } from '@freshworks/react-nucleus';
 
-export default function() {
+export default function MenuPreview() {
     const [show, setShow] = useState(false);
 const options = [
   {
