@@ -8,9 +8,6 @@ const Svg = styled.svg`
   flex-shrink: 0;
   color: currentcolor;
   vertical-align: middle;
-  font-size: 0.75rem;
-  margin-right: 0.5rem;
 `;
 
 export default Svg;
-

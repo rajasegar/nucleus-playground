@@ -13,6 +13,7 @@ import Loader from "./previews/Loader";
 import Menu from "./previews/Menu";
 import Modal from "./previews/Modal";
 import Popover from "./previews/Popover";
+import Flex from "./previews/Flex";
 
 import PreviewContainer from "./PreviewContainer";
 
@@ -27,6 +28,7 @@ const PreviewComponents = {
   Menu,
   Modal,
   Popover,
+  Flex,
 };
 
 export default function Preview(props) {

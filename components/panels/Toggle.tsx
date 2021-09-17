@@ -41,7 +41,6 @@ export default function TogglePanel() {
 
   return (
     <Box p={2}>
-      <h3>Toggle</h3>
       <Dropdown
         filterKey="name"
         label="Size:"

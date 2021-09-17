@@ -27,6 +27,18 @@ const componentsList = [
         name: 'Dropdown', id: 'Dropdown'
     },
     {
+        name: 'Flex', id: 'Flex'
+    },
+    {
+        name: 'Grid', id: 'Grid'
+    },
+    {
+        name: 'Container', id: 'Container'
+    },
+    {
+        name: 'Center', id: 'Center'
+    },
+    {
         name: 'Loader', id: 'Loader'
     },
     {

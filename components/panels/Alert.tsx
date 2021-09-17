@@ -32,7 +32,6 @@ export default function AlertPanel() {
 
   return (
     <Box p={2}>
-      <h3>Alert</h3>
       <Dropdown
         filterKey="name"
         label="Level:"

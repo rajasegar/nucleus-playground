@@ -19,6 +19,11 @@ const reducer = (state, action) => {
         ...state,
         selectedId: action.selectedId,
       };
+    case "SELECT_ROOT":
+      return {
+        ...state,
+        selectedId: "root",
+      };
 
     case "UPDATE_PROPS":
       console.log(action.component);
