@@ -3,7 +3,7 @@ import { Button } from "@freshworks/react-nucleus";
 
 export default function ButtonPreview(props) {
   return (
-    <Button size="normal" inline type="secondary" {...props}>
+    <Button size="normal" inline type="primary" {...props}>
       Hello
     </Button>
   );

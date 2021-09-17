@@ -5,41 +5,38 @@ import { ComponentsContext } from "../../contexts/ComponentsContext";
 
 export default function AlertPanel() {
   const [state, dispatch] = useContext(ComponentsContext);
-  const [level, setLevel] = useState("success");
+  const [position, setPosition] = useState("bottom");
 
-  function updateLevel(level) {
+  function updatePosition(pos) {
     const comp = state.components.find((c) => c.id === state.selectedId);
-    comp.props.level = level.name;
+    comp.props.position = pos.name;
     dispatch({
       type: "UPDATE_PROPS",
       component: comp,
       selectedId: state.selectedId,
     });
-    setLevel(level);
+    setPosition(pos);
   }
 
-  const alertLevels = [
+  const positions = [
     {
-      name: "success",
+      name: "top",
     },
     {
-      name: "warning",
-    },
-    {
-      name: "info",
+      name: "bottom",
     },
   ];
 
   return (
     <Box p={2}>
-      <h3>Alert</h3>
+      <h3>Button Dropdown</h3>
       <Dropdown
         filterKey="name"
-        label="Level:"
+        label="Position:"
         itemToString={(c) => c.name}
-        defaultSelectedItem={level}
-        items={alertLevels}
-        onChange={(c) => updateLevel(c)}
+        defaultSelectedItem={position}
+        items={positions}
+        onChange={(c) => updatePosition(c)}
       />
     </Box>
   );
