@@ -1,9 +1,20 @@
 import React, { createContext, useContext, useReducer } from "react";
 const ComponentsContext = createContext();
 
+const DEFAULT_ID = "root";
+
 const initialState = {
-  components: [],
+  components: {
+    root: {
+      id: DEFAULT_ID,
+      parent: DEFAULT_ID,
+      type: "Box",
+      children: [],
+      props: {},
+    },
+  },
   selectedId: null,
+  hoveredId: null,
   showCode: false,
   showLayout: true,
 };
@@ -11,30 +22,32 @@ const initialState = {
 const reducer = (state, action) => {
   switch (action.type) {
     case "ADD_COMPONENT":
-      return {
+      const hash = Math.random().toString(36).replace("0.", "");
+      const id = `comp-${hash}`;
+      const newState = {
         ...state,
-        components: [...state.components, action.component],
-        selectedId: action.selectedId,
+        selectedId: id,
       };
+      newState.components[action.component.parent].children.push(id);
+      newState.components[id] = action.component;
+      return newState;
     case "SELECT_COMPONENT":
       return {
         ...state,
         selectedId: action.selectedId,
       };
-    case "SELECT_ROOT":
+    case "SELECT_BACKGROUND":
       return {
         ...state,
         selectedId: "root",
       };
 
     case "UPDATE_PROPS":
-      console.log(action.component);
-      const comp = state.components.find((c) => c.id === state.selectedId);
+      const comp = state.components[state.selectedId];
       comp.props = action.component.props;
 
       return {
         ...state,
-        selectedId: action.selectedId,
       };
 
     case "UPDATE_SHOW_LAYOUT":
@@ -47,6 +60,24 @@ const reducer = (state, action) => {
       return {
         ...state,
         showCode: action.showCode,
+      };
+
+    case "COMPONENT_MOUSE_OVER":
+      return {
+        ...state,
+        hoveredId: action.id,
+      };
+
+    case "COMPONENT_MOUSE_OUT":
+      return {
+        ...state,
+        hoveredId: null,
+      };
+
+    case "COMPONENT_CLICK":
+      return {
+        ...state,
+        selectedId: action.id,
       };
 
     default:
