@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Flex, Box, Link, Text } from "rebass/styled-components";
 import { useTheme, Toggle, Menu } from "@freshworks/react-nucleus";
 import { useState } from "react";
 import ChevronDown from "./icons/ChevronDown";
+import { ComponentsContext } from "../contexts/ComponentsContext";
 
 const options = [
   {
@@ -48,9 +49,24 @@ const EditorMenu = () => {
 };
 
 export default function Header() {
+  const [state, dispatch] = useContext(ComponentsContext);
+  const { showLayout, showCode } = state;
   const theme = useTheme();
-  const [builderMode, setBuilderMode] = useState(true);
-  const [codePanel, setcodePanel] = useState(false);
+
+  function updateShowLayout() {
+    dispatch({
+      type: "UPDATE_SHOW_LAYOUT",
+      showLayout: !showLayout,
+    });
+  }
+
+  function updateShowCode() {
+    dispatch({
+      type: "UPDATE_SHOW_CODE",
+      showCode: !showCode,
+    });
+  }
+
   return (
     <Flex px={2} color="white" bg={theme.palette.elephant} alignItems="center">
       <Text p={2} fontWeight="bold">
@@ -63,18 +79,18 @@ export default function Header() {
           <Box px={4}>
             Builder mode
             <Toggle
-              on={builderMode}
+              on={showLayout}
               size="sm"
-              handleChange={() => setBuilderMode(!builderMode)}
+              handleChange={() => updateShowLayout()}
               style={{ "vertical-align": "middle", "margin-left": "8px" }}
             />
           </Box>
           <Box px={4}>
             Code panel
             <Toggle
-              on={codePanel}
+              on={showCode}
               size="sm"
-              handleChange={() => setcodePanel(!codePanel)}
+              handleChange={() => updateShowCode()}
               style={{ "vertical-align": "middle", "margin-left": "8px" }}
             />
           </Box>

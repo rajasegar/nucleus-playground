@@ -4,6 +4,8 @@ const ComponentsContext = createContext();
 const initialState = {
   components: [],
   selectedId: null,
+  showCode: false,
+  showLayout: true,
 };
 
 const reducer = (state, action) => {
@@ -33,6 +35,18 @@ const reducer = (state, action) => {
       return {
         ...state,
         selectedId: action.selectedId,
+      };
+
+    case "UPDATE_SHOW_LAYOUT":
+      return {
+        ...state,
+        showLayout: action.showLayout,
+      };
+
+    case "UPDATE_SHOW_CODE":
+      return {
+        ...state,
+        showCode: action.showCode,
       };
 
     default:
