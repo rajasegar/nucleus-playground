@@ -2,7 +2,7 @@ import React, { memo } from "react";
 import { useComponents } from "../../contexts/ComponentsContext";
 import { getComponentBy } from "../../core/selectors/components";
 
-import { Button } from "@freshworks/react-nucleus";
+import ButtonPreview from "../previews/Button";
 import ButtonDropdownPreview from "../previews/ButtonDropdown";
 import AlertPreview from "../previews/Alert";
 import CheckboxPreview from "../previews/Checkbox";
@@ -33,14 +33,6 @@ const ComponentPreview: React.FC<{
   switch (type) {
     // Simple components
     // Wrapped functional components (forward ref issue)
-    case "Button":
-      return (
-        <PreviewContainer
-          component={component}
-          type={Button}
-          {...forwardedProps}
-        />
-      );
     // Components with children
     case "Flex":
       return (
@@ -52,8 +44,26 @@ const ComponentPreview: React.FC<{
         />
       );
     // More complex components
+    case "Button":
+      return <ButtonPreview component={component} />;
     case "Alert":
       return <AlertPreview component={component} />;
+    case "ButtonDropdown":
+      return <ButtonDropdownPreview component={component} />;
+    case "Checkbox":
+      return <CheckboxPreview component={component} />;
+    case "Toggle":
+      return <TogglePreview component={component} />;
+    case "Input":
+      return <InputPreview component={component} />;
+    case "Loader":
+      return <LoaderPreview component={component} />;
+    case "Menu":
+      return <MenuPreview component={component} />;
+    case "Modal":
+      return <ModalPreview component={component} />;
+    case "Popover":
+      return <PopoverPreview component={component} />;
     default:
       return null;
   }

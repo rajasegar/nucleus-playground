@@ -1,9 +1,15 @@
 import React, { useState } from "react";
 import { Toggle } from "@freshworks/react-nucleus";
+import PreviewWrapper from "./PreviewWrapper";
 
 export default function TogglePreview(props) {
   const [on, setOn] = useState(true);
+
+  const { component } = props;
+
   return (
-    <Toggle on={on} size="sm" handleChange={() => setOn(!on)} {...props} />
+    <PreviewWrapper component={component}>
+      <Toggle on={on} size="sm" handleChange={() => setOn(!on)} {...props} />
+    </PreviewWrapper>
   );
 }

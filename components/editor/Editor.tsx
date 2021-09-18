@@ -1,11 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import SplitPane from "react-split-pane";
-import CodePanel from "./CodePanel";
-import Preview from "./Preview";
-import { ComponentsContext } from "../contexts/ComponentsContext";
+import CodePanel from "../CodePanel";
 import { Box, Text, Link } from "rebass/styled-components";
-import ComponentPreview from "./editor/ComponentPreview";
-import { useDropComponent } from "../hooks/useDropComponent";
+import ComponentPreview from "./ComponentPreview";
+import { useComponents, useDropComponent } from "../../hooks";
 
 export const gridStyles = {
   backgroundImage:
@@ -16,7 +14,7 @@ export const gridStyles = {
 };
 
 export default function Editor() {
-  const [state, dispatch] = useContext(ComponentsContext);
+  const [state, dispatch] = useComponents();
   const { components, showLayout } = state;
 
   const { drop } = useDropComponent("root");
@@ -42,7 +40,7 @@ export default function Editor() {
   const Playground = (
     <Box
       p={2}
-      {...editorBackgroundProps}
+      sx={{ ...editorBackgroundProps }}
       height="100%"
       minWidth="10rem"
       width="100%"

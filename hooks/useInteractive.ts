@@ -36,6 +36,7 @@ export const useInteractive = (
 	})
     },
     onClick: (event: MouseEvent) => {
+	debugger
       event.preventDefault()
       event.stopPropagation()
 	dispatch({

@@ -3,7 +3,7 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import DraggableComponent from "../components/DraggableComponent";
 import { ComponentsProvider } from "../contexts/ComponentsContext";
-import Editor from "../components/Editor";
+import Editor from "../components/editor/Editor";
 import componentsList from "./_componentList";
 import Header from "../components/Header";
 import Inspector from "../components/Inspector";

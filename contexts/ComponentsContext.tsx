@@ -28,13 +28,14 @@ const reducer = (state, action) => {
         ...state,
         selectedId: id,
       };
+      action.component.id = id;
       newState.components[action.component.parent].children.push(id);
       newState.components[id] = action.component;
       return newState;
     case "SELECT_COMPONENT":
       return {
         ...state,
-        selectedId: action.selectedId,
+        selectedId: action.id,
       };
     case "SELECT_BACKGROUND":
       return {
