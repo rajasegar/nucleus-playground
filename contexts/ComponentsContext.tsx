@@ -63,24 +63,6 @@ const reducer = (state, action) => {
         showCode: action.showCode,
       };
 
-    case "COMPONENT_MOUSE_OVER":
-      return {
-        ...state,
-        hoveredId: action.id,
-      };
-
-    case "COMPONENT_MOUSE_OUT":
-      return {
-        ...state,
-        hoveredId: null,
-      };
-
-    case "COMPONENT_CLICK":
-      return {
-        ...state,
-        selectedId: action.id,
-      };
-
     default:
       throw new Error();
   }
@@ -96,6 +78,4 @@ const ComponentsProvider = ({ children }) => {
   );
 };
 
-const useComponents = () => useContext(ComponentsContext);
-
-export { ComponentsContext, ComponentsProvider, useComponents };
+export { ComponentsContext, ComponentsProvider };

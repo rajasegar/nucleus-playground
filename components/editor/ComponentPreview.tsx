@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { useComponents } from "../../contexts/ComponentsContext";
+import { useComponents } from "../../hooks";
 import { getComponentBy } from "../../core/selectors/components";
 
 import ButtonPreview from "../previews/Button";
@@ -12,7 +12,7 @@ import LoaderPreview from "../previews/Loader";
 import MenuPreview from "../previews/Menu";
 import ModalPreview from "../previews/Modal";
 import PopoverPreview from "../previews/Popover";
-import FlexPreview from "../previews/Flex";
+import Flex from "../nucleus/Flex";
 
 import WithChildrenPreviewContainer from "./WithChildrenPreviewContainer";
 import PreviewContainer from "./PreviewContainer";
@@ -39,7 +39,7 @@ const ComponentPreview: React.FC<{
         <WithChildrenPreviewContainer
           enableVisualHelper
           component={component}
-          type={type}
+          type={Flex}
           {...forwardedProps}
         />
       );
@@ -64,6 +64,8 @@ const ComponentPreview: React.FC<{
       return <ModalPreview component={component} />;
     case "Popover":
       return <PopoverPreview component={component} />;
+    /* case "Flex": */
+    /* return <FlexPreview component={component} />; */
     default:
       return null;
   }

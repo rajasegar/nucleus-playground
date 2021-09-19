@@ -3,6 +3,7 @@ import { rootComponents } from '../utils/editor'
 import { useComponents } from './useComponents'
 import { DRAG_TYPES } from "../constants/DragTypes";
 
+
 export const useDropComponent = (
     componentId: string,
     accept: any = rootComponents,
@@ -23,12 +24,8 @@ export const useDropComponent = (
 	    const componentStructure = {
 		name: item.id,
 		type: item.id,
-		props: {
-		    inline: true,
-		    size: 'normal',
-		    type: 'primary',
-		children: ['Hello']
-		},
+		props: {},
+		children:[],
 		parent: componentId,
 	    };
 

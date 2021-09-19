@@ -1,7 +1,8 @@
-import React, { FunctionComponent, ComponentClass } from "react";
-import { useInteractive, useDropComponent } from "../../hooks";
+import React, { FunctionComponent, ComponentClass, useState } from "react";
+import { useComponents, useDropComponent } from "../../hooks";
 import ComponentPreview from "./ComponentPreview";
 import { Box } from "rebass/styled-components";
+import { useTheme } from "@freshworks/react-nucleus";
 
 const WithChildrenPreviewContainer: React.FC<{
   component: any;
@@ -16,11 +17,22 @@ const WithChildrenPreviewContainer: React.FC<{
   ...forwardedProps
 }) => {
   const { drop, isOver } = useDropComponent(component.id);
-  const { props, ref } = useInteractive(component, enableVisualHelper);
-  const propsElement = { ...props, ...forwardedProps, pos: "relative" };
+  const propsElement = {
+    ...component.props,
+    ...forwardedProps,
+    pos: "relative",
+  };
+  const [state, dispatch] = useComponents();
+  const [hover, setHover] = useState(false);
+  const theme = useTheme();
 
-  if (!isBoxWrapped) {
-    propsElement.ref = drop(ref);
+  function selectComponent(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    dispatch({
+      type: "SELECT_COMPONENT",
+      id: component.id,
+    });
   }
 
   if (isOver) {
@@ -35,19 +47,24 @@ const WithChildrenPreviewContainer: React.FC<{
     ))
   );
 
-  if (isBoxWrapped) {
-    let boxProps: any = {
-      display: "inline",
-    };
-
-    return (
-      <Box {...boxProps} ref={drop(ref)}>
-        {children}
-      </Box>
-    );
-  }
-
-  return children;
+  return (
+    <Box
+      sx={
+        hover
+          ? { border: `1px solid ${theme.palette.elephant}` }
+          : { border: "1px dashed black" }
+      }
+      p={1}
+      m={1}
+      onClick={(e) => selectComponent(e)}
+      onMouseOver={() => setHover(true)}
+      onMouseOut={() => setHover(false)}
+      ref={drop}
+      height={component.children.length > 0 ? "auto" : "40px"}
+    >
+      {children}
+    </Box>
+  );
 };
 
 export default WithChildrenPreviewContainer;

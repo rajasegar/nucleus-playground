@@ -29,6 +29,7 @@ export default function PreviewWrapper(props) {
       }
       p={1}
       m={1}
+      width="auto"
       onClick={(e) => selectComponent(e)}
       onMouseOver={() => setHover(true)}
       onMouseOut={() => setHover(false)}
