@@ -19,13 +19,13 @@ const Home: NextPage = () => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <Header />
-        <Flex height="calc(100vh - 3rem)">
+        <Flex>
           <Sidebar />
           <Box bg="white" flex={1} sx={{ position: "relative" }}>
             <Editor />
           </Box>
           <Box
-            maxHeight="calc(100vh - 3rem)"
+            maxHeight="calc(100vh - 35px)"
             flex="0 0 15rem"
             bg="#f7fafc"
             overflowY="auto"

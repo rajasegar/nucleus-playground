@@ -5,6 +5,8 @@ import { useState } from "react";
 import ChevronDown from "./icons/ChevronDown";
 import { ComponentsContext } from "../contexts/ComponentsContext";
 import { Button, Confirmation } from "@freshworks/react-nucleus";
+import { buildParameters } from "../utils/codesandbox";
+import { generateCode } from "../utils/code";
 
 const options = [
   {
@@ -70,14 +72,19 @@ export default function Header() {
     });
   }
 
+  function clearCode() {
+    dispatch({ type: "CLEAR_EDITOR" });
+    setShowClearCode(false);
+  }
+
   const CodeSandboxButton = () => {
     const { components } = state;
     const [isLoading, setIsLoading] = useState(false);
     return (
       <Button
-        type="link"
+        size="mini"
+        type="secondary"
         inline
-        style={{ color: "white" }}
         onClick={async () => {
           setIsLoading(true);
           const code = await generateCode(components);
@@ -90,14 +97,13 @@ export default function Header() {
           );
         }}
         isLoading={isLoading}
-        rightIcon={<ExternalLinkIcon path="" />}
         variant="ghost"
-        size="xs"
       >
         Export code
       </Button>
     );
   };
+
   return (
     <Flex px={2} color="white" bg={theme.palette.elephant} alignItems="center">
       <Text p={2} fontWeight="bold">
@@ -129,9 +135,9 @@ export default function Header() {
       </Box>
       <CodeSandboxButton />
       <Button
-        type="link"
+        type="secondary"
+        size="mini"
         inline
-        style={{ color: "white" }}
         onClick={() => setShowClearCode(true)}
       >
         Clear &times;
@@ -142,7 +148,7 @@ export default function Header() {
         title="Are you sure?"
         cancelButtonText="Cancel"
         confirmButtonText="Yes"
-        onConfirm={() => setShowClearCode(false)}
+        onConfirm={() => clearCode()}
       >
         Do you really want to remove all components on the editor?
       </Confirmation>

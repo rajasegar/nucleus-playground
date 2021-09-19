@@ -19,7 +19,6 @@ const Editor = () => {
 
   const { drop } = useDropComponent("root");
   const isEmpty = !components.root.children.length;
-  console.log("isEmpty: ", isEmpty);
   const rootProps = components.root.props;
 
   let editorBackgroundProps = {};

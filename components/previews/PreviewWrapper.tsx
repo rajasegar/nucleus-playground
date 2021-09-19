@@ -20,15 +20,17 @@ export default function PreviewWrapper(props) {
     });
   }
 
+  let styleProps = {};
+  if (state.showLayout) {
+    styleProps = hover
+      ? { border: `1px solid ${theme.palette.elephant}` }
+      : { border: "1px dashed black" };
+    styleProps["padding"] = "4px";
+    styleProps["margin"] = "4px";
+  }
   return (
     <Box
-      sx={
-        hover
-          ? { border: `1px solid ${theme.palette.elephant}` }
-          : { border: "1px dashed black" }
-      }
-      p={1}
-      m={1}
+      sx={{ ...styleProps }}
       width="auto"
       onClick={(e) => selectComponent(e)}
       onMouseOver={() => setHover(true)}

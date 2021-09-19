@@ -38,6 +38,7 @@ export default function Inspector() {
     <Box
       bg={theme.palette.smoke}
       sx={{ "border-left": `1px solid ${theme.palette.E500}` }}
+      height="100%"
     >
       <Box
         fontWeight="semibold"

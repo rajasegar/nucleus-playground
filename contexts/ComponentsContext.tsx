@@ -63,6 +63,9 @@ const reducer = (state, action) => {
         showCode: action.showCode,
       };
 
+    case "CLEAR_EDITOR":
+      return initialState;
+
     default:
       throw new Error();
   }

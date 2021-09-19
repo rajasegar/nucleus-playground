@@ -12,7 +12,7 @@ import LoaderPreview from "../previews/Loader";
 import MenuPreview from "../previews/Menu";
 import ModalPreview from "../previews/Modal";
 import PopoverPreview from "../previews/Popover";
-import Flex from "../nucleus/Flex";
+import { Flex } from "@freshworks/react-nucleus";
 
 import WithChildrenPreviewContainer from "./WithChildrenPreviewContainer";
 import PreviewContainer from "./PreviewContainer";
