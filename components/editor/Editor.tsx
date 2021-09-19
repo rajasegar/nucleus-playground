@@ -1,6 +1,6 @@
-import React from "react";
-import SplitPane from "react-split-pane";
+import React, { memo } from "react";
 import CodePanel from "../CodePanel";
+import SplitPane from "react-split-pane";
 import { Box, Text, Link } from "rebass/styled-components";
 import ComponentPreview from "./ComponentPreview";
 import { useComponents, useDropComponent } from "../../hooks";
@@ -13,12 +13,13 @@ export const gridStyles = {
   p: 10,
 };
 
-export default function Editor() {
+const Editor = () => {
   const [state, dispatch] = useComponents();
   const { components, showLayout } = state;
 
   const { drop } = useDropComponent("root");
   const isEmpty = !components.root.children.length;
+  console.log("isEmpty: ", isEmpty);
   const rootProps = components.root.props;
 
   let editorBackgroundProps = {};
@@ -40,17 +41,19 @@ export default function Editor() {
   const Playground = (
     <Box
       p={2}
-      sx={{ ...editorBackgroundProps }}
+      sx={{
+        ...editorBackgroundProps,
+        display: `${isEmpty ? "flex" : " block"}`,
+        overflow: "auto",
+        position: "relative",
+        "flex-direction": "column",
+      }}
       height="100%"
       minWidth="10rem"
       width="100%"
-      display={isEmpty ? "flex" : "block"}
       justifyContent="center"
       alignItems="center"
-      overflow="auto"
       ref={drop}
-      position="relative"
-      flexDirection="column"
       onClick={onSelectBackground}
     >
       {isEmpty && (
@@ -81,20 +84,20 @@ export default function Editor() {
   }
 
   return (
-    <div>
-      <SplitPane
-        style={{ overflow: "auto" }}
-        defaultSize="50%"
-        resizerStyle={{
-          border: "3px solid rgba(1, 22, 39, 0.21)",
-          zIndex: 20,
-          cursor: "row-resize",
-        }}
-        split="horizontal"
-      >
-        {Playground}
-        <CodePanel />
-      </SplitPane>
-    </div>
+    <SplitPane
+      style={{ overflow: "auto" }}
+      defaultSize="50%"
+      resizerStyle={{
+        border: "3px solid rgba(1, 22, 39, 0.21)",
+        zIndex: 20,
+        cursor: "row-resize",
+      }}
+      split="horizontal"
+    >
+      {Playground}
+      <CodePanel />
+    </SplitPane>
   );
-}
+};
+
+export default memo(Editor);

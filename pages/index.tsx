@@ -1,18 +1,15 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import DraggableComponent from "../components/DraggableComponent";
 import { ComponentsProvider } from "../contexts/ComponentsContext";
 import Editor from "../components/editor/Editor";
-import componentsList from "./_componentList";
+import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
 import Inspector from "../components/Inspector";
 
-import { Box } from "rebass/styled-components";
-import { useTheme } from "@freshworks/react-nucleus";
+import { Box, Flex } from "rebass/styled-components";
 
 const Home: NextPage = () => {
-  const theme = useTheme();
   return (
     <div className={styles.container}>
       <ComponentsProvider>
@@ -22,20 +19,22 @@ const Home: NextPage = () => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <Header />
-
-        <main className={styles.main}>
-          <Box bg={theme.palette.E800} p={2}>
-            {componentsList.map((component, idx) => (
-              <DraggableComponent
-                id={component.id}
-                name={component.name}
-                key={idx}
-              />
-            ))}
+        <Flex height="calc(100vh - 3rem)">
+          <Sidebar />
+          <Box bg="white" flex={1} sx={{ position: "relative" }}>
+            <Editor />
           </Box>
-          <Editor />
-          <Inspector />
-        </main>
+          <Box
+            maxHeight="calc(100vh - 3rem)"
+            flex="0 0 15rem"
+            bg="#f7fafc"
+            overflowY="auto"
+            overflowX="visible"
+            borderLeft="1px solid #cad5de"
+          >
+            <Inspector />
+          </Box>
+        </Flex>
       </ComponentsProvider>
     </div>
   );

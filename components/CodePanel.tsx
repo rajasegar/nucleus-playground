@@ -1,9 +1,10 @@
 import React, { memo, useState, useEffect, useContext } from "react";
 import Highlight, { defaultProps } from "prism-react-renderer";
-import { Box, Button } from "rebass/styled-components";
+import { Box } from "rebass/styled-components";
 import { useClipboard } from "../hooks/useClipboard";
 import { generateCode } from "../utils/code";
 import theme from "prism-react-renderer/themes/nightOwl";
+import { Button } from "@freshworks/react-nucleus";
 
 import { ComponentsContext } from "../contexts/ComponentsContext";
 
@@ -24,31 +25,24 @@ const CodePanel = () => {
 
   const { onCopy, hasCopied } = useClipboard(code!);
 
+  const style = {
+    overflow: "auto",
+    position: "absolute",
+    top: "0",
+    bottom: "0",
+    left: "0",
+    right: "0",
+    "z-index": "5",
+  };
   return (
-    <Box
-      zIndex={5}
-      p={4}
-      fontSize="sm"
-      backgroundColor="#011627"
-      overflow="auto"
-      position="absolute"
-      top={0}
-      bottom={0}
-      left={0}
-      right={0}
-    >
+    <Box p={2} fontSize="sm" backgroundColor="#011627" sx={{ ...style }}>
       <Button
+        inline
         onClick={onCopy}
-        size="sm"
-        position="absolute"
-        textTransform="uppercase"
-        colorScheme="teal"
-        fontSize="xs"
-        height="24px"
-        top={4}
-        right="1.25em"
+        type="secondary"
+        style={{ position: "absolute", right: "10px" }}
       >
-        {hasCopied ? "copied" : "copy"}
+        {hasCopied ? "Copied!" : "Copy"}
       </Button>
       <Highlight
         {...defaultProps}

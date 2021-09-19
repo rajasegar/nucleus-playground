@@ -4,6 +4,7 @@ import { useTheme, Toggle, Menu } from "@freshworks/react-nucleus";
 import { useState } from "react";
 import ChevronDown from "./icons/ChevronDown";
 import { ComponentsContext } from "../contexts/ComponentsContext";
+import { Button, Confirmation } from "@freshworks/react-nucleus";
 
 const options = [
   {
@@ -53,6 +54,8 @@ export default function Header() {
   const { showLayout, showCode } = state;
   const theme = useTheme();
 
+  const [showClearCode, setShowClearCode] = useState(false);
+
   function updateShowLayout() {
     dispatch({
       type: "UPDATE_SHOW_LAYOUT",
@@ -67,6 +70,34 @@ export default function Header() {
     });
   }
 
+  const CodeSandboxButton = () => {
+    const { components } = state;
+    const [isLoading, setIsLoading] = useState(false);
+    return (
+      <Button
+        type="link"
+        inline
+        style={{ color: "white" }}
+        onClick={async () => {
+          setIsLoading(true);
+          const code = await generateCode(components);
+          setIsLoading(false);
+          const parameters = buildParameters(code);
+
+          window.open(
+            `https://codesandbox.io/api/v1/sandboxes/define?parameters=${parameters}`,
+            "_blank"
+          );
+        }}
+        isLoading={isLoading}
+        rightIcon={<ExternalLinkIcon path="" />}
+        variant="ghost"
+        size="xs"
+      >
+        Export code
+      </Button>
+    );
+  };
   return (
     <Flex px={2} color="white" bg={theme.palette.elephant} alignItems="center">
       <Text p={2} fontWeight="bold">
@@ -96,6 +127,25 @@ export default function Header() {
           </Box>
         </Flex>
       </Box>
+      <CodeSandboxButton />
+      <Button
+        type="link"
+        inline
+        style={{ color: "white" }}
+        onClick={() => setShowClearCode(true)}
+      >
+        Clear &times;
+      </Button>
+      <Confirmation
+        isOpen={showClearCode}
+        onDismiss={() => setShowClearCode(false)}
+        title="Are you sure?"
+        cancelButtonText="Cancel"
+        confirmButtonText="Yes"
+        onConfirm={() => setShowClearCode(false)}
+      >
+        Do you really want to remove all components on the editor?
+      </Confirmation>
       <Link variant="nav" href="#!">
         Github
       </Link>
