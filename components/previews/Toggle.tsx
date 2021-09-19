@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Toggle } from "@freshworks/react-nucleus";
 import PreviewWrapper from "./PreviewWrapper";
 
-export default function TogglePreview(props) {
+export default function TogglePreview(props: any) {
   const [on, setOn] = useState(true);
 
   const { component } = props;

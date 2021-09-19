@@ -22,11 +22,11 @@ const WithChildrenPreviewContainer: React.FC<{
     ...forwardedProps,
     pos: "relative",
   };
-  const [state, dispatch] = useComponents();
+  const [state, dispatch]: any = useComponents();
   const [hover, setHover] = useState(false);
   const theme = useTheme();
 
-  function selectComponent(e) {
+  function selectComponent(e: any) {
     e.preventDefault();
     e.stopPropagation();
     dispatch({
@@ -47,13 +47,13 @@ const WithChildrenPreviewContainer: React.FC<{
     ))
   );
 
-  let styleProps = {};
+  let styleProps: any = {};
   if (state.showLayout) {
     styleProps = hover
       ? { border: `1px solid ${theme.palette.elephant}` }
       : { border: "1px dashed black" };
-    styleProps["padding"] = "4px";
-    styleProps["margin"] = "4px";
+    styleProps.padding = "4px";
+    styleProps.margin = "4px";
   }
 
   return (

@@ -16,7 +16,7 @@ import FlexPanel from "./panels/Flex";
 
 import { getSelectedComponent } from "../core/selectors/components";
 
-const ActionButton = ({ label, children }) => {
+const ActionButton = ({ label, children }: any) => {
   return (
     <Tooltip label={label} position="bottom">
       <Button inline type="link">
@@ -27,7 +27,7 @@ const ActionButton = ({ label, children }) => {
 };
 
 export default function Inspector() {
-  const [state, dispatch] = useContext(ComponentsContext);
+  const [state]: any = useContext(ComponentsContext);
 
   const current = getSelectedComponent(state);
 
@@ -46,11 +46,10 @@ export default function Inspector() {
         color={theme.palette.elephant}
         py={2}
         px={2}
-        boxShadow="sm"
         bg={theme.palette.E300}
         display="flex"
         justifyContent="space-between"
-        flexDir="column"
+        sx={{ "flex-direction": "column" }}
       >
         <Text fontSize="xs" fontWeight="light">
           {current ? current.name : "Document"}

@@ -9,7 +9,7 @@ import { Button } from "@freshworks/react-nucleus";
 import { ComponentsContext } from "../contexts/ComponentsContext";
 
 const CodePanel = () => {
-  const [state, dispatch] = useContext(ComponentsContext);
+  const [state]: any = useContext(ComponentsContext);
 
   const { components } = state;
   const [code, setCode] = useState<string | undefined>(undefined);
@@ -36,14 +36,11 @@ const CodePanel = () => {
   };
   return (
     <Box p={2} fontSize="sm" backgroundColor="#011627" sx={{ ...style }}>
-      <Button
-        inline
-        onClick={onCopy}
-        type="secondary"
-        style={{ position: "absolute", right: "10px" }}
-      >
-        {hasCopied ? "Copied!" : "Copy"}
-      </Button>
+      <Box sx={{ position: "absolute", right: "10px" }}>
+        <Button inline onClick={onCopy} type="secondary">
+          {hasCopied ? "Copied!" : "Copy"}
+        </Button>
+      </Box>
       <Highlight
         {...defaultProps}
         theme={theme}

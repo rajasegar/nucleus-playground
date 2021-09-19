@@ -52,7 +52,7 @@ const EditorMenu = () => {
 };
 
 export default function Header() {
-  const [state, dispatch] = useContext(ComponentsContext);
+  const [state, dispatch]: any = useContext(ComponentsContext);
   const { showLayout, showCode } = state;
   const theme = useTheme();
 
@@ -96,8 +96,6 @@ export default function Header() {
             "_blank"
           );
         }}
-        isLoading={isLoading}
-        variant="ghost"
       >
         Export code
       </Button>
@@ -115,21 +113,23 @@ export default function Header() {
         <Flex alignItems="center">
           <Box px={4}>
             Builder mode
-            <Toggle
-              on={showLayout}
-              size="sm"
-              handleChange={() => updateShowLayout()}
-              style={{ "vertical-align": "middle", "margin-left": "8px" }}
-            />
+            <Box sx={{ "vertical-align": "middle", "margin-left": "8px" }}>
+              <Toggle
+                on={showLayout}
+                size="sm"
+                handleChange={() => updateShowLayout()}
+              />
+            </Box>
           </Box>
           <Box px={4}>
             Code panel
-            <Toggle
-              on={showCode}
-              size="sm"
-              handleChange={() => updateShowCode()}
-              style={{ "vertical-align": "middle", "margin-left": "8px" }}
-            />
+            <Box sx={{ "vertical-align": "middle", "margin-left": "8px" }}>
+              <Toggle
+                on={showCode}
+                size="sm"
+                handleChange={() => updateShowCode()}
+              />
+            </Box>
           </Box>
         </Flex>
       </Box>

@@ -14,7 +14,7 @@ export const gridStyles = {
 };
 
 const Editor = () => {
-  const [state, dispatch] = useComponents();
+  const [state, dispatch]: any = useComponents();
   const { components, showLayout } = state;
 
   const { drop } = useDropComponent("root");
@@ -64,7 +64,6 @@ const Editor = () => {
               e.stopPropagation();
               dispatch.components.loadDemo("onboarding");
             }}
-            textDecoration="underline"
           >
             the onboarding components
           </Link>

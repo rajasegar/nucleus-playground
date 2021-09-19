@@ -14,20 +14,20 @@ export default function DraggableComponent({ ...props }) {
   });
   return (
     <Box
-        boxSizing="border-box"
-        transition="margin 200ms"
       ref={drag}
       m={1}
       p={1}
       color={theme.palette.smoke}
       sx={{
+        transition: "margin 200ms",
+        "box-sizing": "border-box",
         cursor: "move",
         borderRadius: "0.25em",
         ":hover": {
           backgroundColor: theme.palette.smoke,
           color: theme.palette.elephant,
-            marginLeft:-1,
-            marginRight: 1
+          marginLeft: -1,
+          marginRight: 1,
         },
       }}
       {...props}

@@ -15,12 +15,11 @@ import PopoverPreview from "../previews/Popover";
 import { Flex } from "@freshworks/react-nucleus";
 
 import WithChildrenPreviewContainer from "./WithChildrenPreviewContainer";
-import PreviewContainer from "./PreviewContainer";
 
 const ComponentPreview: React.FC<{
   componentName: string;
 }> = ({ componentName, ...forwardedProps }) => {
-  const [state, dispatch] = useComponents();
+  const [state]: any = useComponents();
   const component = getComponentBy(state, componentName);
   if (!component) {
     console.error(

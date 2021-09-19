@@ -22,7 +22,7 @@ const options = [
     name: "Edit",
   },
 ];
-export default function ButtonDropdownPreview(props) {
+export default function ButtonDropdownPreview(props: any) {
   return (
     <ButtonDropdown
       id="multi-click"
