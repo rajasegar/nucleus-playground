@@ -9,16 +9,13 @@ import {
   flexbox,
 } from "styled-system";
 import css, { get } from "@styled-system/css";
-import shouldForwardProp from "@styled-system/should-forward-prop";
 
-const sx = (props) => css(props.sx)(props.theme);
-const base = (props) => css(props.__css)(props.theme);
-const variant = ({ theme, variant, tx = "variants" }) =>
+const sx = (props: any) => css(props.sx)(props.theme);
+const base = (props: any) => css(props.__css)(props.theme);
+const variant = ({ theme, variant, tx = "variants" }: any) =>
   css(get(theme, tx + "." + variant, get(theme, variant)))(theme);
 
-const Box = styled("div", {
-  shouldForwardProp,
-})(
+const Box = styled("div")(
   {
     boxSizing: "border-box",
     margin: 0,
@@ -27,7 +24,6 @@ const Box = styled("div", {
   base,
   variant,
   sx,
-  (props) => props.css,
   compose(space, layout, typography, color, flexbox)
 );
 

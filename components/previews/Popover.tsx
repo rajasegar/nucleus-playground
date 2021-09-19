@@ -33,7 +33,7 @@ export default function PopoverPreview(props: any) {
       <Button
         inline
         aria-describedby="basic-popover"
-        onClick={(e) => setAnchorEl(e.currentTarget)}
+        onClick={(e: any) => setAnchorEl(e.currentTarget)}
       >
         Open
       </Button>

@@ -30,7 +30,7 @@ const Home: NextPage = () => {
             bg="#f7fafc"
             overflowY="auto"
             overflowX="visible"
-            borderLeft="1px solid #cad5de"
+            sx={{ "border-left": "1px solid #cad5de" }}
           >
             <Inspector />
           </Box>

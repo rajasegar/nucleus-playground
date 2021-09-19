@@ -1,7 +1,7 @@
 import React from "react";
 import Svg from "../Svg";
 
-export default () => {
+const Reset = () => {
   return (
     <Svg
       stroke="currentColor"
@@ -18,3 +18,5 @@ export default () => {
     </Svg>
   );
 };
+
+export default Reset;

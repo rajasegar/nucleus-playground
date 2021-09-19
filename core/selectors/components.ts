@@ -1,9 +1,9 @@
-export const getSelectedComponent = (state) => state.components[state.selectedId]
+export const getSelectedComponent = (state: any) => state.components[state.selectedId]
 
-export const getComponentBy = (state, nameOrId:string) => state.components[nameOrId]
+export const getComponentBy = (state: any, nameOrId:string) => state.components[nameOrId]
 
-export const getIsSelectedComponent = (state, componentId) => state.selectedId === componentId
+export const getIsSelectedComponent = (state: any, componentId:string) => state.selectedId === componentId
 
-export const getIsHovered = (state, id) => state.hoveredId === id
+export const getIsHovered = (state: any, id:string) => state.hoveredId === id
 
 

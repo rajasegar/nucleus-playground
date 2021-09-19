@@ -13,7 +13,7 @@ const Svg = styled.svg`
   margin-right: 0.5rem;
 `;
 
-export default () => {
+const DragHandle = () => {
   return (
     <Svg viewBox="0 0 10 10" focusable="false" path="">
       <path
@@ -23,3 +23,4 @@ export default () => {
     </Svg>
   );
 };
+export default DragHandle;

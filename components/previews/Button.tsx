@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "@freshworks/react-nucleus";
 import PreviewWrapper from "./PreviewWrapper";
 
-export default function ButtonPreview(props) {
+export default function ButtonPreview(props: any) {
   const componentProps = props.component.props;
   return (
     <PreviewWrapper {...props}>

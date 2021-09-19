@@ -4,14 +4,14 @@ import { Box } from "rebass/styled-components";
 import { ComponentsContext } from "../../contexts/ComponentsContext";
 
 export default function AlertPanel() {
-  const [state, dispatch] = useContext(ComponentsContext);
-  const [direction, setDirection] = useState();
-  const [justify, setJustify] = useState();
-  const [align, setAlign] = useState();
+  const [state, dispatch]: any = useContext(ComponentsContext);
+  const [direction, setDirection] = useState("");
+  const [justify, setJustify] = useState("");
+  const [align, setAlign] = useState("");
 
   const comp = state.components[state.selectedId];
 
-  function updateDirection(dir) {
+  function updateDirection(dir: any) {
     comp.props.flexDirection = dir.name;
     dispatch({
       type: "UPDATE_PROPS",
@@ -20,7 +20,7 @@ export default function AlertPanel() {
     setDirection(dir);
   }
 
-  function updateJustify(j) {
+  function updateJustify(j: any) {
     comp.props.justifyContent = j.name;
     dispatch({
       type: "UPDATE_PROPS",
@@ -29,7 +29,7 @@ export default function AlertPanel() {
     setJustify(j);
   }
 
-  function updateAlign(j) {
+  function updateAlign(j: any) {
     comp.props.alignItems = j.name;
     dispatch({
       type: "UPDATE_PROPS",

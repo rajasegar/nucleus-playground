@@ -26,8 +26,8 @@ export const formatCode = async (code: string) => {
 }
 
 type BuildBlockParams = {
-  component: IComponent
-  components: IComponents
+  component: any
+  components: any
   forceBuildBlock?: boolean
 }
 
@@ -57,16 +57,7 @@ const buildBlock = ({
       propsNames.forEach((propName: string) => {
         const propsValue = childComponent.props[propName]
 
-        if (
-          propName.toLowerCase().includes('icon') &&
-          childComponent.type !== 'Icon'
-        ) {
-          if (Object.keys(icons).includes(propsValue)) {
-            let operand = `={<${propsValue} />}`
-
-            propsContent += `${propName}${operand} `
-          }
-        } else if (propName !== 'children' && propsValue) {
+        if (propName !== 'children' && propsValue) {
           let operand = `='${propsValue}'`
 
           if (propsValue === true || propsValue === 'true') {
@@ -105,7 +96,7 @@ const buildBlock = ({
   return content
 }
 
-const buildComponents = (components: IComponents) => {
+const buildComponents = (components: any) => {
   const codes = filter(components, comp => !!comp.componentName).map(comp => {
     return generateComponentCode({
       component: { ...components[comp.parent], children: [comp.id] },
@@ -125,8 +116,8 @@ const buildComponents = (components: IComponents) => {
 }
 
 type GenerateComponentCode = {
-  component: IComponent
-  components: IComponents
+  component: any
+  components: any
   componentName?: string
   forceBuildBlock?: boolean
 }
@@ -151,7 +142,7 @@ const ${componentName} = () => (
   return code
 }
 
-export const generateCode = async (components: IComponents) => {
+export const generateCode = async (components: any) => {
   let code = buildBlock({ component: components.root, components })
   let componentsCodes = buildComponents(components)
 

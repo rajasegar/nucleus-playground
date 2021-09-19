@@ -1,16 +1,16 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Dropdown } from "@freshworks/react-nucleus";
 import { Box } from "rebass/styled-components";
 import { useComponents } from "../../hooks";
 
 export default function ButtonPanel() {
-  const [state, dispatch] = useComponents();
+  const [state, dispatch]: any = useComponents();
   const [variant, setVariant] = useState("Primary");
   const [size, setSize] = useState("Normal");
 
   const comp = state.components[state.selectedId];
 
-  function updateVariant(variant) {
+  function updateVariant(variant: any) {
     comp.props.type = variant.name;
     dispatch({
       type: "UPDATE_PROPS",
@@ -19,7 +19,7 @@ export default function ButtonPanel() {
     setVariant(variant);
   }
 
-  function updateSize(size) {
+  function updateSize(size: any) {
     comp.props.size = size.name;
     dispatch({
       type: "UPDATE_PROPS",

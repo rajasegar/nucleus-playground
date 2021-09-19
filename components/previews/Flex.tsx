@@ -5,13 +5,13 @@ import { Box } from "rebass/styled-components";
 import { useTheme } from "@freshworks/react-nucleus";
 import ComponentPreview from "../editor/ComponentPreview";
 
-export default function FlexPreview(props) {
-  const [state, dispatch] = useComponents();
+export default function FlexPreview(props: any) {
+  const [, dispatch]: any = useComponents();
   const [hover, setHover] = useState(false);
   const theme = useTheme();
 
   const { component } = props;
-  function selectComponent(e) {
+  function selectComponent(e: any) {
     e.preventDefault();
     e.stopPropagation();
     dispatch({

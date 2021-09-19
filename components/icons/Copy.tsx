@@ -1,6 +1,6 @@
 import React from "react";
 import Svg from "../Svg";
-export default () => {
+const Copy = () => {
   return (
     <Svg viewBox="0 0 24 24" focusable="false" path="" aria-hidden="true">
       <path
@@ -10,3 +10,4 @@ export default () => {
     </Svg>
   );
 };
+export default Copy;

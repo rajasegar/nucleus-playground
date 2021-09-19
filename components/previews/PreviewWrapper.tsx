@@ -4,13 +4,13 @@ import { useComponents } from "../../hooks";
 
 import { useTheme } from "@freshworks/react-nucleus";
 
-export default function PreviewWrapper(props) {
-  const [state, dispatch] = useComponents();
+export default function PreviewWrapper(props: any) {
+  const [state, dispatch]: any = useComponents();
   const [hover, setHover] = useState(false);
   const theme = useTheme();
 
   const { component } = props;
-  function selectComponent(e) {
+  function selectComponent(e: any) {
     e.preventDefault();
     e.stopPropagation();
     console.log(component);
@@ -20,7 +20,7 @@ export default function PreviewWrapper(props) {
     });
   }
 
-  let styleProps = {};
+  let styleProps: any = {};
   if (state.showLayout) {
     styleProps = hover
       ? { border: `1px solid ${theme.palette.elephant}` }

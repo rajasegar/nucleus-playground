@@ -1,7 +1,7 @@
 import React from "react";
 import Svg from "../Svg";
 
-export default () => {
+const Trash = () => {
   return (
     <Svg
       stroke="currentColor"
@@ -23,3 +23,5 @@ export default () => {
     </Svg>
   );
 };
+
+export default Trash;

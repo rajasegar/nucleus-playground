@@ -2,7 +2,7 @@ import React from "react";
 import { Box } from "rebass/styled-components";
 
 import DraggableComponent from "./DraggableComponent";
-import componentsList from "../pages/_componentList";
+import componentsList from "../constants/componentList";
 
 import { useTheme } from "@freshworks/react-nucleus";
 export default function Sidebar() {

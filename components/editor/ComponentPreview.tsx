@@ -20,7 +20,7 @@ const ComponentPreview: React.FC<{
   componentName: string;
 }> = ({ componentName, ...forwardedProps }) => {
   const [state]: any = useComponents();
-  const component = getComponentBy(state, componentName);
+  const component: any = getComponentBy(state, componentName);
   if (!component) {
     console.error(
       `ComponentPreview unavailable for component ${componentName}`

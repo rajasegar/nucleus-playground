@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useReducer } from "react";
-const ComponentsContext = createContext();
+import React, { createContext, useReducer } from "react";
+const ComponentsContext: any = createContext(null);
 
 const DEFAULT_ID = "root";
 
@@ -19,7 +19,7 @@ const initialState = {
   showLayout: true,
 };
 
-const reducer = (state, action) => {
+const reducer = (state: any, action: any) => {
   switch (action.type) {
     case "ADD_COMPONENT":
       const hash = Math.random().toString(36).replace("0.", "");
@@ -71,7 +71,7 @@ const reducer = (state, action) => {
   }
 };
 
-const ComponentsProvider = ({ children }) => {
+const ComponentsProvider = ({ children }: any) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   return (

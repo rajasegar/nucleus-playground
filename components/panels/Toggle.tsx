@@ -4,12 +4,12 @@ import { Box } from "rebass/styled-components";
 import { ComponentsContext } from "../../contexts/ComponentsContext";
 
 export default function TogglePanel() {
-  const [state, dispatch] = useContext(ComponentsContext);
+  const [state, dispatch]: any = useContext(ComponentsContext);
   const [size, setSize] = useState("");
   const [icon, setIcon] = useState(true);
 
-  function updateSize(size) {
-    const comp = state.components.find((c) => c.id === state.selectedId);
+  function updateSize(size: any) {
+    const comp = state.components.find((c: any) => c.id === state.selectedId);
     comp.props.size = size.name;
     dispatch({
       type: "UPDATE_PROPS",
@@ -19,9 +19,9 @@ export default function TogglePanel() {
     setSize(size);
   }
 
-  function updateHasIcon(value) {
+  function updateHasIcon(value: any) {
     setIcon(value);
-    const comp = state.components.find((c) => c.id === state.selectedId);
+    const comp = state.components.find((c: any) => c.id === state.selectedId);
     comp.props.hasIcon = value;
     dispatch({
       type: "UPDATE_PROPS",
@@ -51,11 +51,7 @@ export default function TogglePanel() {
       />
       <Box py={4} my={2}>
         Has Icon
-        <Toggle
-          on={icon}
-          handleChange={() => updateHasIcon(!icon)}
-          style={{ "vertical-align": "middle", "margin-left": "8px" }}
-        />
+        <Toggle on={icon} handleChange={() => updateHasIcon(!icon)} />
       </Box>
     </Box>
   );

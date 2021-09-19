@@ -10,18 +10,18 @@ export const useDropComponent = (
     canDrop: boolean = true,
 ) => {
 
-    const [state, dispatch] = useComponents();
+    const [state, dispatch]: any = useComponents();
 
     const [{ isOver, isOverCurrent }, drop] = useDrop({
 	accept: DRAG_TYPES.COMPONENT,
-	drop(item, monitor) {
+	drop(item: any, monitor: any) {
 
 	    const didDrop = monitor.didDrop();
 	    if (didDrop) {
 		return;
 	    }
 
-	    const componentStructure = {
+	    const componentStructure: any = {
 		name: item.id,
 		type: item.id,
 		props: {},
@@ -35,7 +35,7 @@ export const useDropComponent = (
 		selectedId: componentStructure.id,
 	    });
 	},
-	collect: (monitor) => ({
+	collect: (monitor: any) => ({
 	    isOver: monitor.isOver(),
 	    isOverCurrent: monitor.isOver({ shallow: true }),
 	}),

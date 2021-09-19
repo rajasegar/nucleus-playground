@@ -4,11 +4,11 @@ import { Box } from "rebass/styled-components";
 import { ComponentsContext } from "../../contexts/ComponentsContext";
 
 export default function AlertPanel() {
-  const [state, dispatch] = useContext(ComponentsContext);
+  const [state, dispatch]: any = useContext(ComponentsContext);
   const [level, setLevel] = useState("success");
 
-  function updateLevel(level) {
-    const comp = state.components.find((c) => c.id === state.selectedId);
+  function updateLevel(level: any) {
+    const comp = state.components.find((c: any) => c.id === state.selectedId);
     comp.props.level = level.name;
     dispatch({
       type: "UPDATE_PROPS",

@@ -1,5 +1,4 @@
 import React, { FunctionComponent, ComponentClass } from "react";
-import { useInteractive } from "../../hooks";
 import { Box } from "rebass/styled-components";
 
 const PreviewContainer: React.FC<{
@@ -14,7 +13,10 @@ const PreviewContainer: React.FC<{
   isBoxWrapped,
   ...forwardedProps
 }) => {
-  const { props, ref } = useInteractive(component, enableVisualHelper);
+  /* const { props, ref } = useInteractive(component, enableVisualHelper); */
+
+  const props: any = {};
+  const ref: any = {};
 
   const children = React.createElement(type, {
     ...props,
