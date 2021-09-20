@@ -1,5 +1,6 @@
 import React from "react";
 import { ButtonDropdown } from "@freshworks/react-nucleus";
+import PreviewWrapper from "./PreviewWrapper";
 
 const options = [
   {
@@ -24,12 +25,14 @@ const options = [
 ];
 export default function ButtonDropdownPreview(props: any) {
   return (
-    <ButtonDropdown
-      id="multi-click"
-      position="bottom"
-      onClick={(e, v: any) => alert(`Clicked ${v.name}`)}
-      options={options}
-      {...props}
-    />
+    <PreviewWrapper component={props.component}>
+      <ButtonDropdown
+        id="multi-click"
+        position="bottom"
+        onClick={(e, v: any) => alert(`Clicked ${v.name}`)}
+        options={options}
+        {...props.component.props}
+      />
+    </PreviewWrapper>
   );
 }

@@ -1,5 +1,7 @@
-import React, { FunctionComponent, ComponentClass } from "react";
+import React, { FunctionComponent, ComponentClass, useState } from "react";
 import { Box } from "rebass/styled-components";
+import { useComponents } from "../../hooks";
+import { useTheme } from "@freshworks/react-nucleus";
 
 const PreviewContainer: React.FC<{
   component: any;
@@ -13,28 +15,45 @@ const PreviewContainer: React.FC<{
   isBoxWrapped,
   ...forwardedProps
 }) => {
-  /* const { props, ref } = useInteractive(component, enableVisualHelper); */
+  const [state, dispatch]: any = useComponents();
+  const [hover, setHover] = useState(false);
+  const theme = useTheme();
 
-  const props: any = {};
-  const ref: any = {};
+  function selectComponent(e: any) {
+    e.preventDefault();
+    e.stopPropagation();
+    dispatch({
+      type: "SELECT_COMPONENT",
+      id: component.id,
+    });
+  }
+
+  const props: any = { ...component.props };
 
   const children = React.createElement(type, {
     ...props,
     ...forwardedProps,
-    ref,
   });
 
-  if (isBoxWrapped) {
-    let boxProps: any = {};
-
-    return (
-      <Box {...boxProps} ref={ref}>
-        {children}
-      </Box>
-    );
+  let styleProps: any = {};
+  if (state.showLayout) {
+    styleProps = hover
+      ? { border: `1px solid ${theme.palette.elephant}` }
+      : { border: "1px dashed black" };
+    styleProps.padding = "4px";
+    styleProps.margin = "4px";
   }
 
-  return children;
+  return (
+    <Box
+      sx={{ ...styleProps }}
+      onClick={(e) => selectComponent(e)}
+      onMouseOver={() => setHover(true)}
+      onMouseOut={() => setHover(false)}
+    >
+      {children}
+    </Box>
+  );
 };
 
 export default PreviewContainer;

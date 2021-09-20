@@ -148,7 +148,10 @@ export default function Header() {
       >
         Do you really want to remove all components on the editor?
       </Confirmation>
-      <Link variant="nav" href="#!">
+      <Link
+        variant="nav"
+        href="https://github.com/rajasegar/nucleus-playground"
+      >
         Github
       </Link>
     </Flex>

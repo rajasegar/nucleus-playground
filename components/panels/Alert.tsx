@@ -7,13 +7,13 @@ export default function AlertPanel() {
   const [state, dispatch]: any = useContext(ComponentsContext);
   const [level, setLevel] = useState("success");
 
+  const comp = state.components[state.selectedId];
+
   function updateLevel(level: any) {
-    const comp = state.components.find((c: any) => c.id === state.selectedId);
     comp.props.level = level.name;
     dispatch({
       type: "UPDATE_PROPS",
       component: comp,
-      selectedId: state.selectedId,
     });
     setLevel(level);
   }

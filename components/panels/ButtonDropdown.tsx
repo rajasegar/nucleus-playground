@@ -1,19 +1,19 @@
 import React, { useState, useContext } from "react";
 import { Dropdown } from "@freshworks/react-nucleus";
 import { Box } from "rebass/styled-components";
-import { ComponentsContext } from "../../contexts/ComponentsContext";
+import { useComponents } from "../../hooks";
 
 export default function AlertPanel() {
-  const [state, dispatch]: any = useContext(ComponentsContext);
+  const [state, dispatch]: any = useComponents();
   const [position, setPosition] = useState("bottom");
 
+  const comp = state.components[state.selectedId];
+
   function updatePosition(pos: any) {
-    const comp = state.components.find((c: any) => c.id === state.selectedId);
     comp.props.position = pos.name;
     dispatch({
       type: "UPDATE_PROPS",
       component: comp,
-      selectedId: state.selectedId,
     });
     setPosition(pos);
   }

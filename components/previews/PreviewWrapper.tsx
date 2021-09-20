@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-/* import { Box } from "rebass/styled-components"; */
+import { Box } from "rebass/styled-components";
 import { useComponents } from "../../hooks";
 
-import { useTheme, Box } from "@freshworks/react-nucleus";
+import { useTheme } from "@freshworks/react-nucleus";
 
 export default function PreviewWrapper(props: any) {
   const [state, dispatch]: any = useComponents();
@@ -13,7 +13,6 @@ export default function PreviewWrapper(props: any) {
   function selectComponent(e: any) {
     e.preventDefault();
     e.stopPropagation();
-    console.log(component);
     dispatch({
       type: "SELECT_COMPONENT",
       id: component.id,
