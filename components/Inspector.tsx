@@ -16,24 +16,24 @@ import FlexPanel from "./panels/Flex";
 
 import { getSelectedComponent } from "../core/selectors/components";
 
-const ActionButton = ({ label, children }: any) => {
-  return (
-    <Tooltip label={label} position="bottom">
-      <Button inline type="link">
-        {children}
-      </Button>
-    </Tooltip>
-  );
-};
-
 export default function Inspector() {
-  const [state]: any = useContext(ComponentsContext);
+  const [state, dispatch]: any = useContext(ComponentsContext);
 
   const current = getSelectedComponent(state);
 
   const isRoot = state.selectedId === "root";
 
   const theme = useTheme();
+  const ActionButton = ({ label, message, children }: any) => {
+    return (
+      <Tooltip label={label} position="bottom">
+        <Button inline type="link" onClick={() => dispatch({ type: message })}>
+          {children}
+        </Button>
+      </Tooltip>
+    );
+  };
+
   return (
     <Box
       bg={theme.palette.smoke}
@@ -61,13 +61,13 @@ export default function Inspector() {
           <ActionButton label="Copy component code">
             <CodeIcon />
           </ActionButton>
-          <ActionButton label="Duplicate">
+          <ActionButton label="Duplicate" message="COPY_COMPONENT">
             <CopyIcon />
           </ActionButton>
           <ActionButton label="Reset props">
             <ResetIcon />
           </ActionButton>
-          <ActionButton label="Remove">
+          <ActionButton label="Remove" message="REMOVE_COMPONENT">
             <TrashIcon />
           </ActionButton>
         </Flex>

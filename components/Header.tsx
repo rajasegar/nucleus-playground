@@ -111,26 +111,22 @@ export default function Header() {
       <EditorMenu />
       <Box mr="auto">
         <Flex alignItems="center">
-          <Box px={4}>
-            Builder mode
-            <Box sx={{ "vertical-align": "middle", "margin-left": "8px" }}>
-              <Toggle
-                on={showLayout}
-                size="sm"
-                handleChange={() => updateShowLayout()}
-              />
-            </Box>
-          </Box>
-          <Box px={4}>
-            Code panel
-            <Box sx={{ "vertical-align": "middle", "margin-left": "8px" }}>
-              <Toggle
-                on={showCode}
-                size="sm"
-                handleChange={() => updateShowCode()}
-              />
-            </Box>
-          </Box>
+          <Flex px={4} alignItems="center">
+            <Box px={2}>Builder mode</Box>
+            <Toggle
+              on={showLayout}
+              size="sm"
+              handleChange={() => updateShowLayout()}
+            />
+          </Flex>
+          <Flex px={4} alignItems="center">
+            <Box px={2}>Code panel</Box>
+            <Toggle
+              on={showCode}
+              size="sm"
+              handleChange={() => updateShowCode()}
+            />
+          </Flex>
         </Flex>
       </Box>
       <CodeSandboxButton />

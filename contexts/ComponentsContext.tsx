@@ -14,23 +14,27 @@ const initialState = {
     },
   },
   selectedId: null,
-  hoveredId: null,
   showCode: false,
   showLayout: true,
 };
 
+function generateId() {
+  const hash = Math.random().toString(36).replace("0.", "");
+  return `comp-${hash}`;
+}
 const reducer = (state: any, action: any) => {
+  console.log(action);
+  console.log(state);
   switch (action.type) {
     case "ADD_COMPONENT":
-      const hash = Math.random().toString(36).replace("0.", "");
-      const id = `comp-${hash}`;
+      const id = generateId();
       const newState = {
         ...state,
         selectedId: id,
       };
-      action.component.id = id;
-      newState.components[action.component.parent].children.push(id);
-      newState.components[id] = action.component;
+      const newComponent = { ...action.component, id };
+      newState.components[newComponent.parent].children.push(id);
+      newState.components[id] = newComponent;
       return newState;
     case "SELECT_COMPONENT":
       return {
@@ -65,6 +69,23 @@ const reducer = (state: any, action: any) => {
 
     case "CLEAR_EDITOR":
       return initialState;
+
+    case "COPY_COMPONENT":
+      const oldComponent = state.components[state.selectedId];
+      const newId = generateId();
+      const draftState = {
+        ...state,
+        selectedId: newId,
+      };
+      const destComponent = { ...oldComponent, id: newId };
+      draftState.components[oldComponent.parent].children.push(newId);
+      draftState.components[newId] = destComponent;
+      return draftState;
+
+    case "REMOVE_COMPONENT":
+      delete state.components[state.selectedId];
+      state.selectedId = DEFAULT_ID;
+      return state;
 
     default:
       throw new Error();
