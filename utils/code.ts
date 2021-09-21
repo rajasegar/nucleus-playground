@@ -36,6 +36,7 @@ const buildBlock = ({
   components,
   forceBuildBlock = false,
 }: BuildBlockParams) => {
+    debugger;
   let content = ''
 
   component.children.forEach((key: string) => {

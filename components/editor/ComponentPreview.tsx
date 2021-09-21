@@ -2,9 +2,7 @@ import React, { memo } from "react";
 import { useComponents } from "../../hooks";
 import { getComponentBy } from "../../core/selectors/components";
 
-import ButtonPreview from "../previews/Button";
 import ButtonDropdownPreview from "../previews/ButtonDropdown";
-import AlertPreview from "../previews/Alert";
 import CheckboxPreview from "../previews/Checkbox";
 import TogglePreview from "../previews/Toggle";
 import InputPreview from "../previews/Input";
@@ -12,9 +10,10 @@ import LoaderPreview from "../previews/Loader";
 import MenuPreview from "../previews/Menu";
 import ModalPreview from "../previews/Modal";
 import PopoverPreview from "../previews/Popover";
-import { Flex } from "@freshworks/react-nucleus";
+import { Flex, Alert, Button } from "@freshworks/react-nucleus";
 
 import WithChildrenPreviewContainer from "./WithChildrenPreviewContainer";
+import PreviewContainer from "./PreviewContainer";
 
 const ComponentPreview: React.FC<{
   componentName: string;
@@ -31,6 +30,23 @@ const ComponentPreview: React.FC<{
 
   switch (type) {
     // Simple components
+    case "Alert":
+      return (
+        <PreviewContainer
+          component={component}
+          type={Alert}
+          {...forwardedProps}
+        />
+      );
+
+    case "Button":
+      return (
+        <PreviewContainer
+          component={component}
+          type={Button}
+          {...forwardedProps}
+        />
+      );
     // Wrapped functional components (forward ref issue)
     // Components with children
     case "Flex":
@@ -43,10 +59,6 @@ const ComponentPreview: React.FC<{
         />
       );
     // More complex components
-    case "Button":
-      return <ButtonPreview component={component} />;
-    case "Alert":
-      return <AlertPreview component={component} />;
     case "ButtonDropdown":
       return <ButtonDropdownPreview component={component} />;
     case "Checkbox":
@@ -63,8 +75,6 @@ const ComponentPreview: React.FC<{
       return <ModalPreview component={component} />;
     case "Popover":
       return <PopoverPreview component={component} />;
-    /* case "Flex": */
-    /* return <FlexPreview component={component} />; */
     default:
       return null;
   }

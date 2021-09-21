@@ -45,10 +45,8 @@ ReactDOM.render(<App />, rootElement);
   "main": "src/index.js",
   "dependencies": {
     "@freshworks/react-nucleus": "^0.0.4",
-    "styled-components": ">=5.0.0",
-    "framer-motion": "^4.1.3",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
     "react-scripts": "4.0.3"
   },
   "devDependencies": {
@@ -65,11 +63,7 @@ ReactDOM.render(<App />, rootElement);
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ],
-  "resolutions": {
-    "react": "17.0.2",
-    "react-dom": "17.0.2"
-  }
+  ]
 }`,
         isBinary: false,
       },
