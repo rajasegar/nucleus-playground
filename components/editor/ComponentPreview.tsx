@@ -2,18 +2,33 @@ import React, { memo } from "react";
 import { useComponents } from "../../hooks";
 import { getComponentBy } from "../../core/selectors/components";
 
-import ButtonDropdownPreview from "../previews/ButtonDropdown";
-import CheckboxPreview from "../previews/Checkbox";
-import TogglePreview from "../previews/Toggle";
-import InputPreview from "../previews/Input";
-import LoaderPreview from "../previews/Loader";
 import MenuPreview from "../previews/Menu";
 import ModalPreview from "../previews/Modal";
 import PopoverPreview from "../previews/Popover";
-import { Flex, Alert, Button } from "@freshworks/react-nucleus";
+import {
+  Flex,
+  Alert,
+  Button,
+  ButtonDropdown,
+  Checkbox,
+  Input,
+  Loader,
+  Toggle,
+} from "@freshworks/react-nucleus";
 
 import WithChildrenPreviewContainer from "./WithChildrenPreviewContainer";
 import PreviewContainer from "./PreviewContainer";
+
+const Nucleus: any = {
+  Alert,
+  Flex,
+  Button,
+  ButtonDropdown,
+  Checkbox,
+  Input,
+  Loader,
+  Toggle,
+};
 
 const ComponentPreview: React.FC<{
   componentName: string;
@@ -31,19 +46,16 @@ const ComponentPreview: React.FC<{
   switch (type) {
     // Simple components
     case "Alert":
-      return (
-        <PreviewContainer
-          component={component}
-          type={Alert}
-          {...forwardedProps}
-        />
-      );
-
     case "Button":
+    case "ButtonDropdown":
+    case "Checkbox":
+    case "Input":
+    case "Loader":
+    case "Toggle":
       return (
         <PreviewContainer
           component={component}
-          type={Button}
+          type={Nucleus[type]}
           {...forwardedProps}
         />
       );
@@ -59,16 +71,6 @@ const ComponentPreview: React.FC<{
         />
       );
     // More complex components
-    case "ButtonDropdown":
-      return <ButtonDropdownPreview component={component} />;
-    case "Checkbox":
-      return <CheckboxPreview component={component} />;
-    case "Toggle":
-      return <TogglePreview component={component} />;
-    case "Input":
-      return <InputPreview component={component} />;
-    case "Loader":
-      return <LoaderPreview component={component} />;
     case "Menu":
       return <MenuPreview component={component} />;
     case "Modal":
