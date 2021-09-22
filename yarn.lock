@@ -284,15 +284,13 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@freshworks/react-nucleus@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@freshworks/react-nucleus/-/react-nucleus-0.0.4.tgz#67487d71c582bf75b2891382f1dd9c5516a2913a"
-  integrity sha512-X4ihWQV9z84wZzZqT+4l1AxUUWZxtO+0KQ8UZmrUlwHzctfP5A3y0dy92vfUCDVaSNxGHtUmuqvuNMrJv6iiGw==
+"@freshworks/react-nucleus@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@freshworks/react-nucleus/-/react-nucleus-0.1.1.tgz#14d71efc02ef4db245ef3516ea7ef66523a9f7a3"
+  integrity sha512-X0RHpaK2RiED356LRhBylBFoz7w1MVFqjc8gE6/qb3tbPIWRP73Wxfyz25l8V2S/pwVUl736DygXdb++MB+uzg==
   dependencies:
     "@reach/dialog" "^0.10.4"
     "@rebass/grid" "6.1.0"
-    "@styled-system/css" "^5.1.5"
-    "@styled-system/should-forward-prop" "^5.1.5"
     dayjs "^1.10.4"
     deepmerge "^4.2.2"
     downshift "^5.4.2"

@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@freshworks/react-nucleus": "^0.0.4",
+    "@freshworks/react-nucleus": "^0.1.1",
     "@styled-system/css": "^5.1.5",
     "@styled-system/should-forward-prop": "^5.1.5",
     "codesandbox": "^2.2.3",

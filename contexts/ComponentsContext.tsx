@@ -24,7 +24,6 @@ function generateId() {
 }
 const reducer = (state: any, action: any) => {
   console.log(action);
-  console.log(state);
   switch (action.type) {
     case "ADD_COMPONENT":
       const id = generateId();
@@ -68,7 +67,7 @@ const reducer = (state: any, action: any) => {
       };
 
     case "CLEAR_EDITOR":
-      return initialState;
+      return { ...state, components: initialState.components };
 
     case "COPY_COMPONENT":
       const oldComponent = state.components[state.selectedId];
@@ -90,6 +89,7 @@ const reducer = (state: any, action: any) => {
     default:
       throw new Error();
   }
+  console.log(state);
 };
 
 const ComponentsProvider = ({ children }: any) => {

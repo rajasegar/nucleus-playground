@@ -14,12 +14,11 @@ import {
   Input,
   Loader,
   Toggle,
+  Grid,
+  Card,
+  Heading,
+  Paragraph,
 } from "@freshworks/react-nucleus";
-
-import Grid from "../nucleus/Grid";
-import Heading from "../nucleus/Heading";
-import Paragraph from "../nucleus/Paragraph";
-import Card from "../nucleus/Card";
 
 import WithChildrenPreviewContainer from "./WithChildrenPreviewContainer";
 import PreviewContainer from "./PreviewContainer";
