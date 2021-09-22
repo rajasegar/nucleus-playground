@@ -14,7 +14,8 @@ export default function ButtonPanel() {
     comp.props.type = variant.name;
     dispatch({
       type: "UPDATE_PROPS",
-      component: comp,
+      name: "type",
+      value: variant.name,
     });
     setVariant(variant);
   }
@@ -23,7 +24,8 @@ export default function ButtonPanel() {
     comp.props.size = size.name;
     dispatch({
       type: "UPDATE_PROPS",
-      component: comp,
+      name: "size",
+      value: size.name,
     });
     setSize(size);
   }

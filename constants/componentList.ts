@@ -1,6 +1,15 @@
 const componentsList = [
     {
+        name: 'Heading', id: 'Heading'
+    },
+    {
+        name: 'Paragraph', id: 'Paragraph'
+    },
+    {
         name: 'Alert', id: 'Alert'
+    },
+    {
+        name: 'Card', id: 'Card'
     },
     {
         name: 'Button', id: 'Button'

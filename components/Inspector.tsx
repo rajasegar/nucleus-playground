@@ -13,6 +13,8 @@ import AlertPanel from "./panels/Alert";
 import ButtonDropdownPanel from "./panels/ButtonDropdown";
 import TogglePanel from "./panels/Toggle";
 import FlexPanel from "./panels/Flex";
+import GridPanel from "./panels/Grid";
+import HeadingPanel from "./panels/Heading";
 
 import { getSelectedComponent } from "../core/selectors/components";
 
@@ -80,6 +82,8 @@ export default function Inspector() {
         )}
         {current && current.name === "Toggle" && <TogglePanel />}
         {current && current.name === "Flex" && <FlexPanel />}
+        {current && current.name === "Grid" && <GridPanel />}
+        {current && current.name === "Heading" && <HeadingPanel />}
       </Box>
     </Box>
   );

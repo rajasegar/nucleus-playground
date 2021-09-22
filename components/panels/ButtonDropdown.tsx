@@ -13,7 +13,8 @@ export default function AlertPanel() {
     comp.props.position = pos.name;
     dispatch({
       type: "UPDATE_PROPS",
-      component: comp,
+      name: "position",
+      value: pos.name,
     });
     setPosition(pos);
   }

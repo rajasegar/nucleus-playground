@@ -16,6 +16,11 @@ import {
   Toggle,
 } from "@freshworks/react-nucleus";
 
+import Grid from "../nucleus/Grid";
+import Heading from "../nucleus/Heading";
+import Paragraph from "../nucleus/Paragraph";
+import Card from "../nucleus/Card";
+
 import WithChildrenPreviewContainer from "./WithChildrenPreviewContainer";
 import PreviewContainer from "./PreviewContainer";
 
@@ -28,6 +33,9 @@ const Nucleus: any = {
   Input,
   Loader,
   Toggle,
+  Heading,
+  Paragraph,
+  Card,
 };
 
 const ComponentPreview: React.FC<{
@@ -52,6 +60,8 @@ const ComponentPreview: React.FC<{
     case "Input":
     case "Loader":
     case "Toggle":
+    case "Heading":
+    case "Paragraph":
       return (
         <PreviewContainer
           component={component}
@@ -67,6 +77,25 @@ const ComponentPreview: React.FC<{
           enableVisualHelper
           component={component}
           type={Flex}
+          {...forwardedProps}
+        />
+      );
+    case "Grid":
+      return (
+        <WithChildrenPreviewContainer
+          enableVisualHelper
+          component={component}
+          type={Grid}
+          {...forwardedProps}
+        />
+      );
+
+    case "Card":
+      return (
+        <WithChildrenPreviewContainer
+          enableVisualHelper
+          component={component}
+          type={Card}
           {...forwardedProps}
         />
       );

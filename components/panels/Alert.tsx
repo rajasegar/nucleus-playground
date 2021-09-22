@@ -13,7 +13,8 @@ export default function AlertPanel() {
     comp.props.level = level.name;
     dispatch({
       type: "UPDATE_PROPS",
-      component: comp,
+      name: "level",
+      value: level.name,
     });
     setLevel(level);
   }

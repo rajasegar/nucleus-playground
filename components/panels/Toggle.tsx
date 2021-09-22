@@ -13,8 +13,8 @@ export default function TogglePanel() {
     comp.props.size = size.name;
     dispatch({
       type: "UPDATE_PROPS",
-      component: comp,
-      selectedId: state.selectedId,
+      name: "size",
+      value: size.name,
     });
     setSize(size);
   }
@@ -25,8 +25,8 @@ export default function TogglePanel() {
     comp.props.hasIcon = value;
     dispatch({
       type: "UPDATE_PROPS",
-      component: comp,
-      selectedId: state.selectedId,
+      name: "hasIcon",
+      value,
     });
   }
 

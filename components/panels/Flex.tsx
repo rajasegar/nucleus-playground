@@ -15,7 +15,8 @@ export default function AlertPanel() {
     comp.props.flexDirection = dir.name;
     dispatch({
       type: "UPDATE_PROPS",
-      component: comp,
+      name: "flexDirection",
+      value: dir.name,
     });
     setDirection(dir);
   }
@@ -24,7 +25,8 @@ export default function AlertPanel() {
     comp.props.justifyContent = j.name;
     dispatch({
       type: "UPDATE_PROPS",
-      component: comp,
+      name: "justifyContent",
+      value: j.name,
     });
     setJustify(j);
   }
@@ -33,7 +35,8 @@ export default function AlertPanel() {
     comp.props.alignItems = j.name;
     dispatch({
       type: "UPDATE_PROPS",
-      component: comp,
+      name: "alignItems",
+      value: j.name,
     });
     setAlign(j);
   }

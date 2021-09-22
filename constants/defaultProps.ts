@@ -52,6 +52,17 @@ const DEFAULT_PROPS: any = {
     'Toggle': {
 	on: true,
 	size: 'sm'
+    },
+    'Grid': {
+	gridTemplateColumns: 'repeat(5, 1fr)',
+	gridGap: 6
+    },
+    'Heading': {
+	text: 'Hello world',
+	as: 'h1'
+    },
+    'Paragraph': {
+	text: 'This is a paragraph'
     }
 }
 
