@@ -99,6 +99,10 @@ const DEFAULT_PROPS: any = {
     hide: true,
   },
 ]
+  },
+  'Tag': {
+    children: 'Pending',
+    variant: 'grey'
   }
 }
 

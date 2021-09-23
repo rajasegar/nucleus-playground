@@ -60,6 +60,9 @@ const componentsList = [
         name: 'Radio', id: 'Radio'
     },
     {
+        name: 'Tag', id: 'Tag'
+    },
+    {
         name: 'Tabs', id: 'Tabs'
     },
     {

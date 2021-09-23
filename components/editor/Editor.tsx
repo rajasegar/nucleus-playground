@@ -1,10 +1,12 @@
 import React, { memo } from "react";
-import CodePanel from "../CodePanel";
-import SplitPane from "react-split-pane";
 import { Box } from "@freshworks/react-nucleus";
-import ComponentPreview from "./ComponentPreview";
+import dynamic from "next/dynamic";
 import { useComponents, useDropComponent } from "../../hooks";
 import styled, { css } from "styled-components";
+
+const ComponentPreview = dynamic(() => import("./ComponentPreview"));
+const CodePanel = dynamic(() => import("../CodePanel"), { ssr: false });
+const SplitPane = dynamic(() => import("react-split-pane"), { ssr: false });
 
 type WrapperProps = {
   isEmpty: boolean;
