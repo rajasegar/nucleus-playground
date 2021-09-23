@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { Flex, Box, Link, Text } from "rebass/styled-components";
+import { Link, Text } from "rebass/styled-components";
 import { useTheme, Toggle, Menu } from "@freshworks/react-nucleus";
 import { useState } from "react";
 import ChevronDown from "./icons/ChevronDown";
 import { ComponentsContext } from "../contexts/ComponentsContext";
-import { Button, Confirmation } from "@freshworks/react-nucleus";
+import { Flex, Box, Button, Confirmation } from "@freshworks/react-nucleus";
 import { buildParameters } from "../utils/codesandbox";
 import { generateCode } from "../utils/code";
 

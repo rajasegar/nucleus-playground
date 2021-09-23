@@ -1,9 +1,9 @@
 import React from "react";
-import { Box } from "rebass/styled-components";
 import { useDrag } from "react-dnd";
 import { DRAG_TYPES } from "../constants/DragTypes";
 import { useTheme } from "@freshworks/react-nucleus";
 import DragHandle from "./icons/DragHandle";
+import styled from "styled-components";
 
 export default function DraggableComponent({ ...props }) {
   const theme = useTheme();
@@ -12,28 +12,28 @@ export default function DraggableComponent({ ...props }) {
     type: DRAG_TYPES.COMPONENT,
     item: () => ({ id, props: {} }),
   });
+
+  const Draggable = styled.div`
+    margin: 4px;
+    padding: 4px;
+    cursor: move;
+    color: ${theme.palette.smoke};
+    transition: margin 200ms;
+    box-sizing: border-box;
+    border-radius: 0.25em;
+
+    :hover {
+      background-color: ${theme.palette.smoke};
+      color: ${theme.palette.elephant};
+      margin-left: -1;
+      margin-right: 1;
+    }
+  `;
+
   return (
-    <Box
-      ref={drag}
-      m={1}
-      p={1}
-      color={theme.palette.smoke}
-      sx={{
-        transition: "margin 200ms",
-        "box-sizing": "border-box",
-        cursor: "move",
-        borderRadius: "0.25em",
-        ":hover": {
-          backgroundColor: theme.palette.smoke,
-          color: theme.palette.elephant,
-          marginLeft: -1,
-          marginRight: 1,
-        },
-      }}
-      {...props}
-    >
+    <Draggable ref={drag} {...props}>
       <DragHandle />
       {name}
-    </Box>
+    </Draggable>
   );
 }

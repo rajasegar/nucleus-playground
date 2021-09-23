@@ -1,7 +1,13 @@
 import React, { useContext } from "react";
-import { Box, Flex, Text } from "rebass/styled-components";
-import { Button, useTheme, Tooltip } from "@freshworks/react-nucleus";
+import {
+  Box,
+  Flex,
+  Button,
+  useTheme,
+  Tooltip,
+} from "@freshworks/react-nucleus";
 import { ComponentsContext } from "../contexts/ComponentsContext";
+import styled from "styled-components";
 
 import CodeIcon from "../components/icons/Code";
 import CopyIcon from "../components/icons/Copy";
@@ -36,30 +42,38 @@ export default function Inspector() {
     );
   };
 
+  const Container = styled.div`
+    background-color: ${theme.palette.smoke};
+    border-left: 1px solid ${theme.palette.E500};
+    height: 100%;
+  `;
+
+  const Header = styled.div`
+    font-weight: semibold;
+    font-size: bold;
+    color: ${theme.palette.elephant};
+    padding: 8px;
+    background-color: ${theme.palette.E300};
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  `;
+
+  const Name = styled.p`
+    font-size: 1em;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+  `;
+
   return (
-    <Box
-      bg={theme.palette.smoke}
-      sx={{ "border-left": `1px solid ${theme.palette.E500}` }}
-      height="100%"
-    >
-      <Box
-        fontWeight="semibold"
-        fontSize="md"
-        color={theme.palette.elephant}
-        py={2}
-        px={2}
-        bg={theme.palette.E300}
-        display="flex"
-        justifyContent="space-between"
-        sx={{ "flex-direction": "column" }}
-      >
-        <Text fontSize="xs" fontWeight="light">
-          {current ? current.name : "Document"}
-        </Text>
-      </Box>
+    <Container>
+      <Header>
+        <Name>{current ? current.name : "Document"}</Name>
+      </Header>
 
       {!isRoot && (
-        <Flex justifyContent="end">
+        <Flex justifyContent="center">
           <ActionButton label="Copy component code">
             <CodeIcon />
           </ActionButton>
@@ -85,6 +99,6 @@ export default function Inspector() {
         {current && current.name === "Grid" && <GridPanel />}
         {current && current.name === "Heading" && <HeadingPanel />}
       </Box>
-    </Box>
+    </Container>
   );
 }

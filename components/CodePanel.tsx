@@ -1,10 +1,9 @@
 import React, { memo, useState, useEffect, useContext } from "react";
 import Highlight, { defaultProps } from "prism-react-renderer";
-import { Box } from "rebass/styled-components";
 import { useClipboard } from "../hooks/useClipboard";
 import { generateCode } from "../utils/code";
 import theme from "prism-react-renderer/themes/nightOwl";
-import { Button } from "@freshworks/react-nucleus";
+import { Button, Box } from "@freshworks/react-nucleus";
 
 import { ComponentsContext } from "../contexts/ComponentsContext";
 
