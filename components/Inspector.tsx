@@ -24,14 +24,38 @@ import HeadingPanel from "./panels/Heading";
 
 import { getSelectedComponent } from "../core/selectors/components";
 
+const Container = styled.div`
+  background-color: ${(props) => props.theme.palette.smoke};
+  border-left: 1px solid ${(props) => props.theme.palette.E500};
+  height: 100%;
+`;
+
+const Header = styled.div`
+  font-weight: semibold;
+  font-size: bold;
+  color: ${(props) => props.theme.palette.elephant};
+  padding: 8px;
+  background-color: ${(props) => props.theme.palette.E300};
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+`;
+
+const Name = styled.p`
+  font-size: 1em;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+`;
+
 export default function Inspector() {
+  const theme = useTheme();
   const [state, dispatch]: any = useContext(ComponentsContext);
 
   const current = getSelectedComponent(state);
 
   const isRoot = state.selectedId === "root";
 
-  const theme = useTheme();
   const ActionButton = ({ label, message, children }: any) => {
     return (
       <Tooltip label={label} position="bottom">
@@ -42,33 +66,9 @@ export default function Inspector() {
     );
   };
 
-  const Container = styled.div`
-    background-color: ${theme.palette.smoke};
-    border-left: 1px solid ${theme.palette.E500};
-    height: 100%;
-  `;
-
-  const Header = styled.div`
-    font-weight: semibold;
-    font-size: bold;
-    color: ${theme.palette.elephant};
-    padding: 8px;
-    background-color: ${theme.palette.E300};
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-  `;
-
-  const Name = styled.p`
-    font-size: 1em;
-    font-weight: bold;
-    margin: 0;
-    padding: 0;
-  `;
-
   return (
-    <Container>
-      <Header>
+    <Container theme={theme}>
+      <Header theme={theme}>
         <Name>{current ? current.name : "Document"}</Name>
       </Header>
 

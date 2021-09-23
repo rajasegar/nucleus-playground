@@ -1,17 +1,37 @@
 import React, { memo } from "react";
 import CodePanel from "../CodePanel";
 import SplitPane from "react-split-pane";
-import { Box, Text, Link } from "rebass/styled-components";
+import { Box } from "@freshworks/react-nucleus";
 import ComponentPreview from "./ComponentPreview";
 import { useComponents, useDropComponent } from "../../hooks";
+import styled, { css } from "styled-components";
 
-export const gridStyles = {
-  backgroundImage:
-    "linear-gradient(to right, #d9e2e9 1px, transparent 1px),linear-gradient(to bottom, #d9e2e9 1px, transparent 1px);",
-  backgroundSize: "20px 20px",
-  bgColor: "#edf2f6",
-  p: 10,
+type WrapperProps = {
+  isEmpty: boolean;
+  showLayout: boolean;
 };
+
+const Wrapper = styled.div<WrapperProps>`
+  padding: 4px;
+  height: 100%;
+  minwidth: 10rem;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  display: ${(props) => (props.isEmpty ? "flex" : "block")};
+  overflow: auto;
+  position: relative;
+  flex-direction: column;
+  ${(props) =>
+    props.showLayout &&
+    css`
+      background-image: linear-gradient(to right, #d9e2e9 1px, transparent 1px),
+        linear-gradient(to bottom, #d9e2e9 1px, transparent 1px);
+      background-size: 20px 20px;
+      bg-color: #edf2f6;
+      padding: 10px;
+    `}
+`;
 
 const Editor = () => {
   const [state, dispatch]: any = useComponents();
@@ -28,37 +48,22 @@ const Editor = () => {
     });
   };
 
-  if (showLayout) {
-    editorBackgroundProps = gridStyles;
-  }
-
   editorBackgroundProps = {
     ...editorBackgroundProps,
     ...rootProps,
   };
 
   const Playground = (
-    <Box
-      p={2}
-      sx={{
-        ...editorBackgroundProps,
-        display: `${isEmpty ? "flex" : " block"}`,
-        overflow: "auto",
-        position: "relative",
-        "flex-direction": "column",
-      }}
-      height="100%"
-      minWidth="10rem"
-      width="100%"
-      justifyContent="center"
-      alignItems="center"
+    <Wrapper
+      showLayout={showLayout}
+      isEmpty={isEmpty}
       ref={drop}
       onClick={onSelectBackground}
     >
       {isEmpty && (
-        <Text maxWidth="md" color="gray.400" fontSize="xl" textAlign="center">
+        <Box maxWidth="md" color="gray.400" fontSize="xl" textAlign="center">
           Drag some component to start coding without code! Or load{" "}
-          <Link
+          <a
             color="gray.500"
             onClick={(e: React.MouseEvent) => {
               e.stopPropagation();
@@ -66,15 +71,15 @@ const Editor = () => {
             }}
           >
             the onboarding components
-          </Link>
+          </a>
           .
-        </Text>
+        </Box>
       )}
 
       {components.root.children.map((name: string) => (
         <ComponentPreview key={name} componentName={name} />
       ))}
-    </Box>
+    </Wrapper>
   );
 
   if (!state.showCode) {

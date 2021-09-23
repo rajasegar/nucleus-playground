@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Dropdown } from "@freshworks/react-nucleus";
-import { Box } from "rebass/styled-components";
+import { Dropdown, Box } from "@freshworks/react-nucleus";
 import { useComponents } from "../../hooks";
 
 export default function ButtonPanel() {

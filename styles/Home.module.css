@@ -9,8 +9,8 @@
 }
 
 .main {
-  display: grid;
-  grid-template-columns: 250px 1fr 300px;
+  display: flex;
+  height: 100%;
 }
 
 .footer {
@@ -116,3 +116,16 @@
   }
 }
 
+.editorWrapper {
+    background-color: white;
+    flex: 1;
+    position: relative;
+}
+
+.inspectorWrapper {
+    flex: 0 0 15rem;
+    background-color: #f7fafc;
+    overflow-y: auto;
+    overflow-x: visible;
+    border-left: 1px solid #cad5de;
+}

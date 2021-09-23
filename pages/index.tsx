@@ -7,8 +7,6 @@ import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
 import Inspector from "../components/Inspector";
 
-import { Box, Flex } from "rebass/styled-components";
-
 const Home: NextPage = () => {
   return (
     <div className={styles.container}>
@@ -19,21 +17,15 @@ const Home: NextPage = () => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <Header />
-        <Flex height="100%">
+        <div className={styles.main}>
           <Sidebar />
-          <Box bg="white" flex={1} sx={{ position: "relative" }}>
+          <div className={styles.editorWrapper}>
             <Editor />
-          </Box>
-          <Box
-            flex="0 0 15rem"
-            bg="#f7fafc"
-            overflowY="auto"
-            overflowX="visible"
-            sx={{ "border-left": "1px solid #cad5de" }}
-          >
+          </div>
+          <div className={styles.inspectorWrapper}>
             <Inspector />
-          </Box>
-        </Flex>
+          </div>
+        </div>
       </ComponentsProvider>
     </div>
   );

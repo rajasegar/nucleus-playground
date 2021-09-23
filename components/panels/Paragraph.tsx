@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
-import { Input } from "@freshworks/react-nucleus";
-import { Box } from "rebass/styled-components";
+import { Input, Box } from "@freshworks/react-nucleus";
 import { ComponentsContext } from "../../contexts/ComponentsContext";
 
 export default function HeadingPanel() {

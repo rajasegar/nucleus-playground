@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { Link, Text } from "rebass/styled-components";
 import { useTheme, Toggle, Menu } from "@freshworks/react-nucleus";
 import { useState } from "react";
 import ChevronDown from "./icons/ChevronDown";
@@ -7,6 +6,7 @@ import { ComponentsContext } from "../contexts/ComponentsContext";
 import { Flex, Box, Button, Confirmation } from "@freshworks/react-nucleus";
 import { buildParameters } from "../utils/codesandbox";
 import { generateCode } from "../utils/code";
+import styled from "styled-components";
 
 const options = [
   {
@@ -27,17 +27,21 @@ const options = [
   },
 ];
 
+const EditorTrigger = styled.div`
+  margin-left: 32px;
+  margin-right: 32px;
+  :hover {
+  cursor; pointer;
+}
+`;
+
 const EditorMenu = () => {
   const [show, setShow] = useState(false);
   return (
     <div style={{ marginLeft: "8px", position: "relative" }}>
-      <Text
-        onClick={() => setShow(!show)}
-        mx={4}
-        sx={{ ":hover": { cursor: "pointer" } }}
-      >
+      <EditorTrigger onClick={() => setShow(!show)}>
         Editor <ChevronDown />
-      </Text>
+      </EditorTrigger>
       {show && (
         <div style={{ position: "absolute" }}>
           <Menu
@@ -104,10 +108,10 @@ export default function Header() {
 
   return (
     <Flex px={2} color="white" bg={theme.palette.elephant} alignItems="center">
-      <Text p={2} fontWeight="bold">
+      <Box p={2} fontWeight="bold">
         Nucleus
-      </Text>
-      <Text>Playground</Text>
+      </Box>
+      <Box>Playground</Box>
       <EditorMenu />
       <Box mr="auto">
         <Flex alignItems="center">
@@ -148,12 +152,7 @@ export default function Header() {
       >
         Do you really want to remove all components on the editor?
       </Confirmation>
-      <Link
-        variant="nav"
-        href="https://github.com/rajasegar/nucleus-playground"
-      >
-        Github
-      </Link>
+      <a href="https://github.com/rajasegar/nucleus-playground">Github</a>
     </Flex>
   );
 }

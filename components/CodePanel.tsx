@@ -3,7 +3,8 @@ import Highlight, { defaultProps } from "prism-react-renderer";
 import { useClipboard } from "../hooks/useClipboard";
 import { generateCode } from "../utils/code";
 import theme from "prism-react-renderer/themes/nightOwl";
-import { Button, Box } from "@freshworks/react-nucleus";
+import { Button } from "@freshworks/react-nucleus";
+import styled from "styled-components";
 
 import { ComponentsContext } from "../contexts/ComponentsContext";
 
@@ -24,7 +25,9 @@ const CodePanel = () => {
 
   const { onCopy, hasCopied } = useClipboard(code!);
 
-  const style = {
+  const Container = styled.div`
+    padding: 4px;
+    background-color: #011627;
     overflow: "auto",
     position: "absolute",
     top: "0",
@@ -32,14 +35,20 @@ const CodePanel = () => {
     left: "0",
     right: "0",
     "z-index": "5",
-  };
+  `;
+
+  const CopyButtonWrapper = styled.div`
+    position: absolute;
+    right: 10px;
+  `;
+
   return (
-    <Box p={2} fontSize="sm" backgroundColor="#011627" sx={{ ...style }}>
-      <Box sx={{ position: "absolute", right: "10px" }}>
+    <Container>
+      <CopyButtonWrapper>
         <Button inline onClick={onCopy} type="secondary">
           {hasCopied ? "Copied!" : "Copy"}
         </Button>
-      </Box>
+      </CopyButtonWrapper>
       <Highlight
         {...defaultProps}
         theme={theme}
@@ -58,7 +67,7 @@ const CodePanel = () => {
           </pre>
         )}
       </Highlight>
-    </Box>
+    </Container>
   );
 };
 

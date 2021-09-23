@@ -1,7 +1,7 @@
 import React, { FunctionComponent, ComponentClass, useState } from "react";
-import { Box } from "rebass/styled-components";
 import { useComponents } from "../../hooks";
 import { useTheme } from "@freshworks/react-nucleus";
+import { Container } from "./PreviewWrapper";
 
 const PreviewContainer: React.FC<{
   component: any;
@@ -35,24 +35,17 @@ const PreviewContainer: React.FC<{
     ...forwardedProps,
   });
 
-  let styleProps: any = {};
-  if (state.showLayout) {
-    styleProps = hover
-      ? { border: `1px solid ${theme.palette.elephant}` }
-      : { border: "1px dashed black" };
-    styleProps.padding = "4px";
-    styleProps.margin = "4px";
-  }
-
   return (
-    <Box
-      sx={{ ...styleProps }}
+    <Container
+      hover={hover}
+      theme={theme}
+      showLayout={state.showLayout}
       onClick={(e) => selectComponent(e)}
       onMouseOver={() => setHover(true)}
       onMouseOut={() => setHover(false)}
     >
       {children}
-    </Box>
+    </Container>
   );
 };
 

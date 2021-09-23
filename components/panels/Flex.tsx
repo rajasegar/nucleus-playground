@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Dropdown } from "@freshworks/react-nucleus";
-import { Box } from "rebass/styled-components";
+import { Dropdown, Box } from "@freshworks/react-nucleus";
 import { ComponentsContext } from "../../contexts/ComponentsContext";
 
 export default function AlertPanel() {

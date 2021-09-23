@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Dropdown, Toggle } from "@freshworks/react-nucleus";
-import { Box } from "rebass/styled-components";
+import { Dropdown, Toggle, Box } from "@freshworks/react-nucleus";
 import { ComponentsContext } from "../../contexts/ComponentsContext";
 
 export default function TogglePanel() {

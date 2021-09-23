@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { Button, Modal } from "@freshworks/react-nucleus";
+import { Button, Modal, Flex } from "@freshworks/react-nucleus";
 import styled from "styled-components";
-import { Flex } from "@rebass/grid";
 
 const ModalBody = styled.div`
   padding: 18px 32px 32px 32px;
