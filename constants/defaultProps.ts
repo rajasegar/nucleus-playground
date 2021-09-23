@@ -6,7 +6,8 @@ const DEFAULT_PROPS: any = {
 	inline: true,
 	type: 'primary',
 	size: 'normal',
-	children: 'Hello'
+	children: 'Hello',
+	onClick: () => {},
     },
     'ButtonDropdown': {
 	id:"multi-click",
@@ -39,7 +40,8 @@ const DEFAULT_PROPS: any = {
 	checked: true,
 	name: "checkA",
 	id: "checkA",
-	children: 'I Agree'
+	children: 'I Agree',
+	onChange: () => {}
     },
     'Input': {
 	placeholder:"Accepts 10 chars",
@@ -47,11 +49,13 @@ const DEFAULT_PROPS: any = {
 	showCount:false,
 	value:'',
 	label:"First Name:",
+	onChange: () => {},
     },
     'Loader': {},
     'Toggle': {
 	on: true,
-	size: 'sm'
+	size: 'sm',
+	handleChange: () => {} 
     },
     'Grid': {
 	gridTemplateColumns: 'repeat(5, 1fr)',
@@ -63,7 +67,11 @@ const DEFAULT_PROPS: any = {
     },
     'Paragraph': {
 	text: 'This is a paragraph'
-    }
+    },
+    'Box': {
+	height: '100px'
+    },
+    'Card':  {}
 }
 
 export default DEFAULT_PROPS;

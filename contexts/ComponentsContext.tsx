@@ -13,7 +13,7 @@ const initialState = {
       props: {},
     },
   },
-  selectedId: null,
+  selectedId: DEFAULT_ID,
   showCode: false,
   showLayout: true,
 };
@@ -67,7 +67,7 @@ const reducer = (state: any, action: any) => {
       };
 
     case "CLEAR_EDITOR":
-      return { ...state, components: initialState.components };
+      return { ...state, ...initialState };
 
     case "COPY_COMPONENT":
       const oldComponent = state.components[state.selectedId];

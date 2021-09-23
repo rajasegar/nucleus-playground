@@ -18,6 +18,7 @@ import {
   Card,
   Heading,
   Paragraph,
+  Box,
 } from "@freshworks/react-nucleus";
 
 import WithChildrenPreviewContainer from "./WithChildrenPreviewContainer";
@@ -35,6 +36,7 @@ const Nucleus: any = {
   Heading,
   Paragraph,
   Card,
+  Box,
 };
 
 const ComponentPreview: React.FC<{
@@ -95,6 +97,15 @@ const ComponentPreview: React.FC<{
           enableVisualHelper
           component={component}
           type={Card}
+          {...forwardedProps}
+        />
+      );
+    case "Box":
+      return (
+        <WithChildrenPreviewContainer
+          enableVisualHelper
+          component={component}
+          type={Box}
           {...forwardedProps}
         />
       );
