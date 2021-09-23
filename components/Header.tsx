@@ -1,12 +1,18 @@
-import React, { useContext } from "react";
-import { useTheme, Toggle, Menu } from "@freshworks/react-nucleus";
-import { useState } from "react";
+import React, { useContext, useState } from "react";
+import styled from "styled-components";
+import {
+  Button,
+  Confirmation,
+  useTheme,
+  Toggle,
+  Menu,
+} from "@freshworks/react-nucleus";
 import ChevronDown from "./icons/ChevronDown";
 import { ComponentsContext } from "../contexts/ComponentsContext";
-import { Flex, Box, Button, Confirmation } from "@freshworks/react-nucleus";
 import { buildParameters } from "../utils/codesandbox";
 import { generateCode } from "../utils/code";
-import styled from "styled-components";
+
+import styles from "../styles/Home.module.css";
 
 const options = [
   {
@@ -107,32 +113,30 @@ export default function Header() {
   };
 
   return (
-    <Flex px={2} color="white" bg={theme.palette.elephant} alignItems="center">
-      <Box p={2} fontWeight="bold">
-        Nucleus
-      </Box>
-      <Box>Playground</Box>
+    <div className={styles.header}>
+      <div className={styles.brand}>Nucleus</div>
+      <div>Playground</div>
       <EditorMenu />
-      <Box mr="auto">
-        <Flex alignItems="center">
-          <Flex px={4} alignItems="center">
-            <Box px={2}>Builder mode</Box>
+      <div style={{ marginRight: "auto" }}>
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <div className={styles.toggleWrap}>
+            <div className={styles.toggleLabel}>Builder mode</div>
             <Toggle
               on={showLayout}
               size="sm"
               handleChange={() => updateShowLayout()}
             />
-          </Flex>
-          <Flex px={4} alignItems="center">
-            <Box px={2}>Code panel</Box>
+          </div>
+          <div className={styles.toggleWrap}>
+            <div className={styles.toggleLabel}>Code panel</div>
             <Toggle
               on={showCode}
               size="sm"
               handleChange={() => updateShowCode()}
             />
-          </Flex>
-        </Flex>
-      </Box>
+          </div>
+        </div>
+      </div>
       <CodeSandboxButton />
       <Button
         type="secondary"
@@ -153,6 +157,6 @@ export default function Header() {
         Do you really want to remove all components on the editor?
       </Confirmation>
       <a href="https://github.com/rajasegar/nucleus-playground">Github</a>
-    </Flex>
+    </div>
   );
 }

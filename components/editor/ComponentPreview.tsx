@@ -19,6 +19,7 @@ import {
   Heading,
   Paragraph,
   Box,
+  Tabs,
 } from "@freshworks/react-nucleus";
 
 import WithChildrenPreviewContainer from "./WithChildrenPreviewContainer";
@@ -37,6 +38,7 @@ const Nucleus: any = {
   Paragraph,
   Card,
   Box,
+  Tabs,
 };
 
 const ComponentPreview: React.FC<{
@@ -63,6 +65,7 @@ const ComponentPreview: React.FC<{
     case "Toggle":
     case "Heading":
     case "Paragraph":
+    case "Tabs":
       return (
         <PreviewContainer
           component={component}
