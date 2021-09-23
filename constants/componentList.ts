@@ -42,10 +42,7 @@ const componentsList = [
         name: 'Grid', id: 'Grid'
     },
     {
-        name: 'Container', id: 'Container'
-    },
-    {
-        name: 'Center', id: 'Center'
+        name: 'Box', id: 'Box'
     },
     {
         name: 'Loader', id: 'Loader'
