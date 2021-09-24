@@ -22,6 +22,8 @@ import FlexPanel from "./panels/Flex";
 import GridPanel from "./panels/Grid";
 import HeadingPanel from "./panels/Heading";
 import TagPanel from "./panels/Tag";
+import ParagraphPanel from "./panels/Paragraph";
+import CardPanel from "./panels/Card";
 
 import { getSelectedComponent } from "../core/selectors/components";
 
@@ -99,6 +101,8 @@ export default function Inspector() {
         {current && current.name === "Flex" && <FlexPanel />}
         {current && current.name === "Grid" && <GridPanel />}
         {current && current.name === "Heading" && <HeadingPanel />}
+        {current && current.name === "Paragraph" && <ParagraphPanel />}
+        {current && current.name === "Card" && <CardPanel />}
         {current && current.name === "Tag" && <TagPanel />}
       </Box>
     </Container>

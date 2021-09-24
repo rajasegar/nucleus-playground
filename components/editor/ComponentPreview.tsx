@@ -11,6 +11,7 @@ import {
   Button,
   ButtonDropdown,
   Checkbox,
+  Dropdown,
   Input,
   Loader,
   Toggle,
@@ -21,6 +22,7 @@ import {
   Box,
   Tabs,
   Tag,
+  MultiSelectDropdown,
 } from "@freshworks/react-nucleus";
 
 import WithChildrenPreviewContainer from "./WithChildrenPreviewContainer";
@@ -32,6 +34,7 @@ const Nucleus: any = {
   Button,
   ButtonDropdown,
   Checkbox,
+  Dropdown,
   Input,
   Loader,
   Toggle,
@@ -41,6 +44,7 @@ const Nucleus: any = {
   Box,
   Tabs,
   Tag,
+  MultiSelectDropdown,
 };
 
 const ComponentPreview: React.FC<{
@@ -62,6 +66,7 @@ const ComponentPreview: React.FC<{
     case "Button":
     case "ButtonDropdown":
     case "Checkbox":
+    case "Dropdown":
     case "Input":
     case "Loader":
     case "Toggle":
@@ -69,6 +74,7 @@ const ComponentPreview: React.FC<{
     case "Paragraph":
     case "Tabs":
     case "Tag":
+    case "MultiSelectDropdown":
       return (
         <PreviewContainer
           component={component}

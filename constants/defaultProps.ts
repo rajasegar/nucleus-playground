@@ -71,7 +71,9 @@ const DEFAULT_PROPS: any = {
     'Box': {
 	height: '100px'
     },
-  'Card':  {},
+    'Card':  {
+	width: '100%'
+  },
   'Tabs': {
     value:'freshRelease',
     onChange: () => {},
@@ -103,7 +105,31 @@ const DEFAULT_PROPS: any = {
   'Tag': {
     children: 'Pending',
     variant: 'grey'
-  }
+  },
+    'Dropdown': {
+	items: [
+	    { id: 'apple', name: 'Apple' },
+	    { id: 'orange', name: 'Orange' },
+	    { id: 'grapes', name: 'Grapes' },
+	],
+        width:"230px",
+        defaultSelectedItem:'Apple',
+        onChange:() => {},
+        disabled:false,
+        placeholder: "-- --- --"
+    },
+    'MultiSelectDropdown': {
+	name:"cuisine",
+        items:[
+	    { id: 'indian', name: 'Indian'},
+	    { id: 'chinese', name: 'Chinese'},
+	    { id: 'thai', name: 'Thai'},
+	],
+        selectedItem:['Indian'],
+        onChange: () => {},
+        label:"Favorite Cuisine",
+          placeholder:"Choose your option quickly"
+    }
 }
 
 export default DEFAULT_PROPS;
