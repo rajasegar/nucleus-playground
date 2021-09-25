@@ -8,24 +8,24 @@ const BorderPanel = () => {
   return (
     <>
       <Input
-        label="Border"
-        value={comp.props.border}
+        label="Opacity:"
+        value={comp.props.opacity}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
           dispatch({
             type: "UPDATE_PROPS",
-            name: "border",
+            name: "opacity",
             value: e.target.value,
           })
         }
       />
 
       <Input
-        label="Border Radius"
-        value={comp.props.borderRadius}
+        label="Box Shadow:"
+        value={comp.props.boxShadow}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
           dispatch({
             type: "UPDATE_PROPS",
-            name: "borderRadius",
+            name: "boxShadow",
             value: e.target.value,
           })
         }

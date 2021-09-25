@@ -6,6 +6,8 @@ import DimensionPanel from "./styles/DimensionPanel";
 import CustomPropsPanel from "./styles/CustomPropsPanel";
 import DisplayPanel from "./styles/DisplayPanel";
 import TextPanel from "./styles/TextPanel";
+import BorderPanel from "./styles/BorderPanel";
+import EffectsPanel from "./styles/EffectsPanel";
 
 import ParentInspector from "../ParentInspector";
 import ChildrenInspector from "../ChildrenInspector";
@@ -54,6 +56,12 @@ const StylesPanel: React.FC<Props> = ({
         </AccordionItem>
         <AccordionItem label="Typography">
           <TextPanel />
+        </AccordionItem>
+        <AccordionItem label="Border">
+          <BorderPanel />
+        </AccordionItem>
+        <AccordionItem label="Effect">
+          <EffectsPanel />
         </AccordionItem>
       </>
     )}

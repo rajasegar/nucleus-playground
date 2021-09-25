@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import { useComponents } from "../../../../hooks";
 import { Input, Grid, Box } from "@freshworks/react-nucleus";
-import styled from "styled-components";
+import { FormInput } from "~components/inspector/controls/FormInput";
 
 type PaddingPanelPropsType = {
   type: "margin" | "padding";
@@ -10,70 +10,18 @@ type PaddingPanelPropsType = {
 const ATTRIBUTES = {
   margin: {
     all: "Margin",
-    left: "ml",
-    right: "mr",
-    bottom: "mb",
-    top: "mt",
+    left: "marginLeft",
+    right: "marginRight",
+    bottom: "marginBottom",
+    top: "marginTop",
   },
   padding: {
     all: "Padding",
-    left: "pl",
-    right: "pr",
-    bottom: "pb",
-    top: "pt",
+    left: "paddingLeft",
+    right: "paddingRight",
+    bottom: "paddingBottom",
+    top: "paddingTop",
   },
-};
-
-const SmallInput = styled.input`
-  max-width: 100px;
-  padding: 4px 12px;
-  height: 32px;
-  font-size: 14px;
-  line-height: 32px;
-  font-weight: 500;
-  border-radius: 5px;
-  border: 1px solid #cfd7df;
-`;
-
-const FormInputWrapper = styled.div`
-  margin: 0.25em 0;
-`;
-
-type FormInputProps = {
-  label: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-};
-const FormInput = ({ label, value, onChange }: FormInputProps) => {
-  let placeholder: string = "All";
-  switch (label) {
-    case "mr":
-    case "pr":
-      placeholder = "→ right";
-      break;
-    case "ml":
-    case "pl":
-      placeholder = "← left";
-      break;
-    case "mt":
-    case "pt":
-      placeholder = "↑ top";
-      break;
-    case "mb":
-    case "pb":
-      placeholder = "↓ bottom";
-      break;
-  }
-  return (
-    <FormInputWrapper>
-      <SmallInput
-        type="text"
-        value={value}
-        onChange={onChange}
-        placeholder={placeholder}
-      />
-    </FormInputWrapper>
-  );
 };
 
 const PaddingPanel = ({ type }: PaddingPanelPropsType) => {
@@ -83,12 +31,12 @@ const PaddingPanel = ({ type }: PaddingPanelPropsType) => {
     <Box my={2}>
       <Input
         label={ATTRIBUTES[type].all}
-        value={comp.props.margin}
+        value={comp.props[type]}
         placeholder="All"
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
           dispatch({
             type: "UPDATE_PROPS",
-            name: "text",
+            name: type,
             value: e.target.value,
           })
         }
@@ -96,23 +44,23 @@ const PaddingPanel = ({ type }: PaddingPanelPropsType) => {
 
       <Grid gridTemplateColumns="repeat(2,1fr)" gridGap={1}>
         <FormInput
-          label={ATTRIBUTES[type].left}
           value={comp.props.marginLeft}
+          placeholder="← left"
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             dispatch({
               type: "UPDATE_PROPS",
-              name: "text",
+              name: ATTRIBUTES[type].left,
               value: e.target.value,
             })
           }
         />
         <FormInput
-          label={ATTRIBUTES[type].right}
           value={comp.props.marginRight}
+          placeholder="→ right"
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             dispatch({
               type: "UPDATE_PROPS",
-              name: "text",
+              name: ATTRIBUTES[type].right,
               value: e.target.value,
             })
           }
@@ -121,23 +69,23 @@ const PaddingPanel = ({ type }: PaddingPanelPropsType) => {
 
       <Grid gridTemplateColumns="repeat(2,1fr)" gridGap={1}>
         <FormInput
-          label={ATTRIBUTES[type].top}
           value={comp.props.marginTop}
+          placeholder="↑ top"
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             dispatch({
               type: "UPDATE_PROPS",
-              name: "text",
+              name: ATTRIBUTES[type].top,
               value: e.target.value,
             })
           }
         />
         <FormInput
-          label={ATTRIBUTES[type].bottom}
           value={comp.props.marginBottom}
+          placeholder="↓ bottom"
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             dispatch({
               type: "UPDATE_PROPS",
-              name: "text",
+              name: ATTRIBUTES[type].bottom,
               value: e.target.value,
             })
           }
