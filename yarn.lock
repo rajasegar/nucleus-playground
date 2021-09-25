@@ -199,10 +199,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@freshworks/react-nucleus@0.2.2":
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@freshworks/react-nucleus/-/react-nucleus-0.2.2.tgz#0abbb510ad448713d7126d3ca84dd14a256bbb3f"
-  integrity sha512-cFhjGP/3B/EXYA2XuOhb3F0dGDA+WzMm5ghdW95R6OkD0yne/EGFJNdC2XdTJdUHCVuZ3oArfzA4ryGgi+4RfA==
+"@freshworks/react-nucleus@0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@freshworks/react-nucleus/-/react-nucleus-0.2.3.tgz#36535e4020c1cbfb247c1b9065b0090ca761411f"
+  integrity sha512-Sua5lmQEmogYwne5rBrF9xkbR85rg+0rQ/AL8V44iMPb2ZFxFhZ1kUPfqxzdA+mDKxarAp3ZzXzcDwFjBjYs5w==
   dependencies:
     "@reach/dialog" "^0.10.4"
     "@rebass/grid" "6.1.0"

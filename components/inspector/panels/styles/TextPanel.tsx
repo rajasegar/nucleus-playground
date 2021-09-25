@@ -1,5 +1,5 @@
 import React, { memo, useState } from "react";
-import { Checkbox, Dropdown, Input } from "@freshworks/react-nucleus";
+import { Checkbox, Dropdown, Input, Flex } from "@freshworks/react-nucleus";
 import { useComponents } from "~hooks/index";
 
 const TextPanel = () => {
@@ -33,35 +33,36 @@ const TextPanel = () => {
 
   return (
     <>
-      <h3>Style</h3>
-      <Checkbox
-        checked={comp.props.fontWeight === "bold"}
-        name="Bold"
-        id="bold"
-        onChange={() =>
-          dispatch({
-            type: "UPDATE_PROPS",
-            name: "fontWeight",
-            value: "bold",
-          })
-        }
-      >
-        Bold
-      </Checkbox>
-      <Checkbox
-        checked={comp.props.fontStyle === "italic"}
-        name="Italic"
-        id="italic"
-        onChange={() =>
-          dispatch({
-            type: "UPDATE_PROPS",
-            name: "fontStyle",
-            value: "italic",
-          })
-        }
-      >
-        Italic
-      </Checkbox>
+      <Flex my={2}>
+        <Checkbox
+          checked={comp.props.fontWeight === "bold"}
+          name="Bold"
+          id="bold"
+          onChange={(e, checked) =>
+            dispatch({
+              type: "UPDATE_PROPS",
+              name: "fontWeight",
+              value: checked ? "bold" : "normal",
+            })
+          }
+        >
+          Bold
+        </Checkbox>
+        <Checkbox
+          checked={comp.props.fontStyle === "italic"}
+          name="Italic"
+          id="italic"
+          onChange={(e, checked) =>
+            dispatch({
+              type: "UPDATE_PROPS",
+              name: "fontStyle",
+              value: checked ? "italic" : "normal",
+            })
+          }
+        >
+          Italic
+        </Checkbox>
+      </Flex>
       <Dropdown
         filterKey="name"
         label="Text Align:"

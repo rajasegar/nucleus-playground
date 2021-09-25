@@ -7,11 +7,11 @@ type ContainerProps = {
 };
 
 export const Container = styled.div<ContainerProps>`
-  padding: 1rem;
-  margin: 4px;
   ${(props) =>
     props.showLayout &&
     css`
+      padding: 1rem;
+      margin: 4px;
       border: ${props.hover
         ? `1px solid ${props.theme.palette.elephant}`
         : "1px dashed black"};
