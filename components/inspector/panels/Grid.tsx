@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Input, Box } from "@freshworks/react-nucleus";
-import { ComponentsContext } from "../../contexts/ComponentsContext";
+import { ComponentsContext } from "~contexts/ComponentsContext";
 
 export default function GridPanel() {
   const [state, dispatch]: any = useContext(ComponentsContext);

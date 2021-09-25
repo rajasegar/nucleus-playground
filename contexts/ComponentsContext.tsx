@@ -89,7 +89,6 @@ const reducer = (state: any, action: any) => {
     default:
       throw new Error();
   }
-  console.log(state);
 };
 
 const ComponentsProvider = ({ children }: any) => {

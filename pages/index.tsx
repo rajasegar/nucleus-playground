@@ -5,7 +5,7 @@ import { ComponentsProvider } from "../contexts/ComponentsContext";
 import Editor from "../components/editor/Editor";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
-import Inspector from "../components/Inspector";
+import Inspector from "../components/inspector/Inspector";
 
 const Home: NextPage = () => {
   return (

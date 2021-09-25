@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Dropdown, Box } from "@freshworks/react-nucleus";
-import { useComponents } from "../../hooks";
+import { useComponents } from "~hooks/index";
 
 export default function TagPanel() {
   const [state, dispatch]: any = useComponents();

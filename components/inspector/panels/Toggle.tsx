@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Dropdown, Toggle, Box } from "@freshworks/react-nucleus";
-import { ComponentsContext } from "../../contexts/ComponentsContext";
+import { ComponentsContext } from "~contexts/ComponentsContext";
 
 export default function TogglePanel() {
   const [state, dispatch]: any = useContext(ComponentsContext);

@@ -1,5 +1,11 @@
 const componentsList = [
     {
+        name: 'Accordion', id: 'Accordion'
+    },
+    {
+        name: 'AccordionItem', id: 'AccordionItem'
+    },
+    {
         name: 'Heading', id: 'Heading'
     },
     {
@@ -9,7 +15,16 @@ const componentsList = [
         name: 'Alert', id: 'Alert'
     },
     {
+        name: 'Avatar', id: 'Avatar'
+    },
+    {
+        name: 'Badge', id: 'Badge'
+    },
+    {
         name: 'Card', id: 'Card'
+    },
+    {
+        name: 'Icons', id: 'Icons'
     },
     {
         name: 'Button', id: 'Button'

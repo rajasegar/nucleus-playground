@@ -23,6 +23,11 @@ import {
   Tabs,
   Tag,
   MultiSelectDropdown,
+  Avatar,
+  Badge,
+  Icons,
+  Accordion,
+  AccordionItem,
 } from "@freshworks/react-nucleus";
 
 import WithChildrenPreviewContainer from "./WithChildrenPreviewContainer";
@@ -31,6 +36,7 @@ import PreviewContainer from "./PreviewContainer";
 const Nucleus: any = {
   Alert,
   Flex,
+  Grid,
   Button,
   ButtonDropdown,
   Checkbox,
@@ -45,6 +51,11 @@ const Nucleus: any = {
   Tabs,
   Tag,
   MultiSelectDropdown,
+  Avatar,
+  Badge,
+  Icons,
+  Accordion,
+  AccordionItem,
 };
 
 const ComponentPreview: React.FC<{
@@ -74,7 +85,11 @@ const ComponentPreview: React.FC<{
     case "Paragraph":
     case "Tabs":
     case "Tag":
+    case "Avatar":
+    case "Badge":
+    case "Icons":
     case "MultiSelectDropdown":
+    case "AccordionItem":
       return (
         <PreviewContainer
           component={component}
@@ -85,42 +100,19 @@ const ComponentPreview: React.FC<{
     // Wrapped functional components (forward ref issue)
     // Components with children
     case "Flex":
-      return (
-        <WithChildrenPreviewContainer
-          enableVisualHelper
-          component={component}
-          type={Flex}
-          {...forwardedProps}
-        />
-      );
     case "Grid":
+    case "Card":
+    case "Box":
+    case "Accordion":
       return (
         <WithChildrenPreviewContainer
           enableVisualHelper
           component={component}
-          type={Grid}
+          type={Nucleus[type]}
           {...forwardedProps}
         />
       );
 
-    case "Card":
-      return (
-        <WithChildrenPreviewContainer
-          enableVisualHelper
-          component={component}
-          type={Card}
-          {...forwardedProps}
-        />
-      );
-    case "Box":
-      return (
-        <WithChildrenPreviewContainer
-          enableVisualHelper
-          component={component}
-          type={Box}
-          {...forwardedProps}
-        />
-      );
     // More complex components
     case "Menu":
       return <MenuPreview component={component} />;

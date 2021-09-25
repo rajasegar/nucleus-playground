@@ -1,6 +1,6 @@
 import React from "react";
 import { Input, Box } from "@freshworks/react-nucleus";
-import { useComponents } from "../../hooks";
+import { useComponents } from "~hooks/index";
 
 export default function CardPanel() {
   const [state, dispatch]: any = useComponents();

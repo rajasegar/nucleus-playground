@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Dropdown, Box } from "@freshworks/react-nucleus";
-import { useComponents } from "../../hooks";
+import { useComponents } from "~hooks/index";
 
 export default function AlertPanel() {
   const [state, dispatch]: any = useComponents();

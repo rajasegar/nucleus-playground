@@ -6,13 +6,13 @@ import {
   useTheme,
   Tooltip,
 } from "@freshworks/react-nucleus";
-import { ComponentsContext } from "../contexts/ComponentsContext";
+import { ComponentsContext } from "../../contexts/ComponentsContext";
 import styled from "styled-components";
 
-import CodeIcon from "../components/icons/Code";
-import CopyIcon from "../components/icons/Copy";
-import TrashIcon from "../components/icons/Trash";
-import ResetIcon from "../components/icons/Reset";
+import CodeIcon from "../../components/icons/Code";
+import CopyIcon from "../../components/icons/Copy";
+import TrashIcon from "../../components/icons/Trash";
+import ResetIcon from "../../components/icons/Reset";
 
 import ButtonPanel from "./panels/Button";
 import AlertPanel from "./panels/Alert";
@@ -25,7 +25,9 @@ import TagPanel from "./panels/Tag";
 import ParagraphPanel from "./panels/Paragraph";
 import CardPanel from "./panels/Card";
 
-import { getSelectedComponent } from "../core/selectors/components";
+import StylesPanel from "./panels/StylesPanel";
+
+import { getSelectedComponent } from "../../core/selectors/components";
 
 const Container = styled.div`
   background-color: ${(props) => props.theme.palette.smoke};
@@ -58,6 +60,9 @@ export default function Inspector() {
   const current = getSelectedComponent(state);
 
   const isRoot = state.selectedId === "root";
+  const parentIsRoot = current.parent === "root";
+
+  const componentHasChildren = current.children.length > 0;
 
   const ActionButton = ({ label, message, children }: any) => {
     return (
@@ -105,6 +110,11 @@ export default function Inspector() {
         {current && current.name === "Card" && <CardPanel />}
         {current && current.name === "Tag" && <TagPanel />}
       </Box>
+      <StylesPanel
+        isRoot={isRoot}
+        showChildren={componentHasChildren}
+        parentIsRoot={parentIsRoot}
+      />
     </Container>
   );
 }
