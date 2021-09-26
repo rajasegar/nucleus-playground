@@ -24,6 +24,7 @@ import HeadingPanel from "./panels/Heading";
 import TagPanel from "./panels/Tag";
 import ParagraphPanel from "./panels/Paragraph";
 import CardPanel from "./panels/Card";
+import AccordionItemPanel from "./panels/AccordionItem";
 
 import StylesPanel from "./panels/StylesPanel";
 
@@ -109,6 +110,7 @@ export default function Inspector() {
         {current && current.name === "Paragraph" && <ParagraphPanel />}
         {current && current.name === "Card" && <CardPanel />}
         {current && current.name === "Tag" && <TagPanel />}
+        {current && current.name === "AccordionItem" && <AccordionItemPanel />}
       </Box>
       <StylesPanel
         isRoot={isRoot}

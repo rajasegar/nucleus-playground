@@ -23,7 +23,6 @@ function generateId() {
   return `comp-${hash}`;
 }
 const reducer = (state: any, action: any) => {
-  console.log(action);
   switch (action.type) {
     case "ADD_COMPONENT":
       const id = generateId();
@@ -47,12 +46,10 @@ const reducer = (state: any, action: any) => {
       };
 
     case "UPDATE_PROPS":
-      const comp = state.components[state.selectedId];
+      const comp = { ...state.components[state.selectedId] };
       comp.props[action.name] = action.value;
-
-      return {
-        ...state,
-      };
+      state.components[state.selectedId] = comp;
+      return state;
 
     case "UPDATE_SHOW_LAYOUT":
       return {
@@ -67,7 +64,7 @@ const reducer = (state: any, action: any) => {
       };
 
     case "CLEAR_EDITOR":
-      return { ...state, ...initialState };
+      return initialState;
 
     case "COPY_COMPONENT":
       const oldComponent = state.components[state.selectedId];

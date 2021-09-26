@@ -4,12 +4,11 @@ import { ComponentsContext } from "~contexts/ComponentsContext";
 
 export default function TogglePanel() {
   const [state, dispatch]: any = useContext(ComponentsContext);
-  const [size, setSize] = useState("");
-  const [icon, setIcon] = useState(true);
+  const comp = state.components[state.selectedId];
+  const [size, setSize] = useState(comp.props.size);
+  const [icon, setIcon] = useState(comp.props.hasIcon);
 
   function updateSize(size: any) {
-    const comp = state.components.find((c: any) => c.id === state.selectedId);
-    comp.props.size = size.name;
     dispatch({
       type: "UPDATE_PROPS",
       name: "size",
@@ -20,8 +19,6 @@ export default function TogglePanel() {
 
   function updateHasIcon(value: any) {
     setIcon(value);
-    const comp = state.components.find((c: any) => c.id === state.selectedId);
-    comp.props.hasIcon = value;
     dispatch({
       type: "UPDATE_PROPS",
       name: "hasIcon",

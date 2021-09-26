@@ -71,39 +71,58 @@ const TextPanel = () => {
         items={alignments}
         onChange={(c) => updateTextAlign(c)}
       />
-      <Input
-        label="Font-size:"
-        value={comp.props.fontSize}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          dispatch({
-            type: "UPDATE_PROPS",
-            name: "fontSize",
-            value: e.target.value,
-          })
-        }
-      />
-      <Input
-        label="Line Height:"
-        value={comp.props.lineHeight}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          dispatch({
-            type: "UPDATE_PROPS",
-            name: "lineHeight",
-            value: e.target.value,
-          })
-        }
-      />
-      <Input
-        label="Letter Spacing:"
-        value={comp.props.letterSpacing}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          dispatch({
-            type: "UPDATE_PROPS",
-            name: "letterSpacing",
-            value: e.target.value,
-          })
-        }
-      />
+      <p>
+        <Input
+          label="Font-size:"
+          value={comp.props.fontSize}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            dispatch({
+              type: "UPDATE_PROPS",
+              name: "fontSize",
+              value: e.target.value,
+            })
+          }
+        />
+      </p>
+      <p>
+        <Input
+          label="Color:"
+          value={comp.props.color}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            dispatch({
+              type: "UPDATE_PROPS",
+              name: "color",
+              value: e.target.value,
+            })
+          }
+        />
+      </p>
+      <p>
+        <Input
+          label="Line Height:"
+          value={comp.props.lineHeight}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            dispatch({
+              type: "UPDATE_PROPS",
+              name: "lineHeight",
+              value: e.target.value,
+            })
+          }
+        />
+      </p>
+      <p>
+        <Input
+          label="Letter Spacing:"
+          value={comp.props.letterSpacing}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            dispatch({
+              type: "UPDATE_PROPS",
+              name: "letterSpacing",
+              value: e.target.value,
+            })
+          }
+        />
+      </p>
     </>
   );
 };

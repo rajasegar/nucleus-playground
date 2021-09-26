@@ -28,6 +28,7 @@ import {
   Icons,
   Accordion,
   AccordionItem,
+  Radio,
 } from "@freshworks/react-nucleus";
 
 import WithChildrenPreviewContainer from "./WithChildrenPreviewContainer";
@@ -56,6 +57,7 @@ const Nucleus: any = {
   Icons,
   Accordion,
   AccordionItem,
+  Radio,
 };
 
 const ComponentPreview: React.FC<{
@@ -90,6 +92,7 @@ const ComponentPreview: React.FC<{
     case "Icons":
     case "MultiSelectDropdown":
     case "AccordionItem":
+    case "Radio":
       return (
         <PreviewContainer
           component={component}

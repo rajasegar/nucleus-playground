@@ -1,6 +1,19 @@
 import React, { useContext } from "react";
-import { Input, Box } from "@freshworks/react-nucleus";
+import { Box } from "@freshworks/react-nucleus";
 import { ComponentsContext } from "~contexts/ComponentsContext";
+import styled from "styled-components";
+
+const Label = styled.label`
+  font-size: 0.75em;
+  display: block;
+`;
+
+const TextArea = styled.textarea`
+  width: 100%;
+  padding: 4px 8px;
+  border-radius: 5px;
+  border: 1px solid #cfd7df;
+`;
 
 export default function HeadingPanel() {
   const [state, dispatch]: any = useContext(ComponentsContext);
@@ -9,17 +22,19 @@ export default function HeadingPanel() {
 
   return (
     <Box p={2}>
-      <Input
-        label="Text"
-        value={comp.props.text}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+      <Label>Text :</Label>
+      <TextArea
+        rows={5}
+        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
           dispatch({
             type: "UPDATE_PROPS",
-            name: "text",
+            name: "children",
             value: e.target.value,
           })
         }
-      />
+      >
+        {comp.props.children}
+      </TextArea>
     </Box>
   );
 }

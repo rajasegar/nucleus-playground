@@ -140,12 +140,16 @@ const DEFAULT_PROPS: any = {
   'Icons': {
     glyph: 'chevron-down'
   },
-  'Accordion': {
-    children: []
-  },
+  'Accordion': {},
   'AccordionItem': {
     label: 'Section 1',
-    children: '<h1>Hello world</h1>'
+  },
+  'Radio': {
+    name:"hello",
+    value:"hello",
+    checked:true,
+    onChange:() => {},
+    children: 'Click me!'
   }
 }
 

@@ -10,7 +10,7 @@ export const Container = styled.div<ContainerProps>`
   ${(props) =>
     props.showLayout &&
     css`
-      padding: 1rem;
+      padding: 0.5rem;
       margin: 4px;
       border: ${props.hover
         ? `1px solid ${props.theme.palette.elephant}`

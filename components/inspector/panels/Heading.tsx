@@ -8,23 +8,23 @@ export default function HeadingPanel() {
   const comp = state.components[state.selectedId];
 
   const asValues = [
-    { name: "h1" },
-    { name: "h2" },
-    { name: "h3" },
-    { name: "h4" },
-    { name: "h5" },
-    { name: "h6" },
+    { name: "1" },
+    { name: "2" },
+    { name: "3" },
+    { name: "4" },
+    { name: "5" },
+    { name: "6" },
   ];
 
   return (
     <Box p={2}>
       <Input
         label="Text"
-        value={comp.props.text}
+        value={comp.props.children}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
           dispatch({
             type: "UPDATE_PROPS",
-            name: "text",
+            name: "children",
             value: e.target.value,
           })
         }
@@ -32,12 +32,12 @@ export default function HeadingPanel() {
 
       <Dropdown
         filterKey="name"
-        label="as:"
+        label="Level:"
         itemToString={(c: any) => c.name}
         defaultSelectedItem="h1"
         items={asValues}
         onChange={(c: any) =>
-          dispatch({ type: "UPDATE_PROPS", name: "as", value: c.name })
+          dispatch({ type: "UPDATE_PROPS", name: "level", value: c.name })
         }
       />
     </Box>

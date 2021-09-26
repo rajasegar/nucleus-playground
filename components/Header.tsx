@@ -3,9 +3,9 @@ import styled from "styled-components";
 import {
   Button,
   Confirmation,
-  useTheme,
   Toggle,
   Menu,
+  Box,
 } from "@freshworks/react-nucleus";
 import ChevronDown from "./icons/ChevronDown";
 import { ComponentsContext } from "../contexts/ComponentsContext";
@@ -64,7 +64,6 @@ const EditorMenu = () => {
 export default function Header() {
   const [state, dispatch]: any = useContext(ComponentsContext);
   const { showLayout, showCode } = state;
-  const theme = useTheme();
 
   const [showClearCode, setShowClearCode] = useState(false);
 
@@ -89,26 +88,50 @@ export default function Header() {
 
   const CodeSandboxButton = () => {
     const { components } = state;
-    const [isLoading, setIsLoading] = useState(false);
     return (
-      <Button
-        size="mini"
-        type="secondary"
-        inline
-        onClick={async () => {
-          setIsLoading(true);
-          const code = await generateCode(components);
-          setIsLoading(false);
-          const parameters = buildParameters(code);
+      <Box mx={2}>
+        <Button
+          size="mini"
+          type="secondary"
+          inline
+          onClick={async () => {
+            const code = await generateCode(components);
+            const parameters = buildParameters(code);
 
-          window.open(
-            `https://codesandbox.io/api/v1/sandboxes/define?parameters=${parameters}`,
-            "_blank"
-          );
-        }}
-      >
-        Export code
-      </Button>
+            window.open(
+              `https://codesandbox.io/api/v1/sandboxes/define?parameters=${parameters}`,
+              "_blank"
+            );
+          }}
+        >
+          Export code
+        </Button>
+      </Box>
+    );
+  };
+
+  const ClearButton = () => {
+    return (
+      <Box mx={2}>
+        <Button
+          type="secondary"
+          size="mini"
+          inline
+          onClick={() => setShowClearCode(true)}
+        >
+          Clear &times;
+        </Button>
+        <Confirmation
+          isOpen={showClearCode}
+          onDismiss={() => setShowClearCode(false)}
+          title="Are you sure?"
+          cancelButtonText="Cancel"
+          confirmButtonText="Yes"
+          onConfirm={() => clearCode()}
+        >
+          Do you really want to remove all components on the editor?
+        </Confirmation>
+      </Box>
     );
   };
 
@@ -138,24 +161,7 @@ export default function Header() {
         </div>
       </div>
       <CodeSandboxButton />
-      <Button
-        type="secondary"
-        size="mini"
-        inline
-        onClick={() => setShowClearCode(true)}
-      >
-        Clear &times;
-      </Button>
-      <Confirmation
-        isOpen={showClearCode}
-        onDismiss={() => setShowClearCode(false)}
-        title="Are you sure?"
-        cancelButtonText="Cancel"
-        confirmButtonText="Yes"
-        onConfirm={() => clearCode()}
-      >
-        Do you really want to remove all components on the editor?
-      </Confirmation>
+      <ClearButton />
       <a href="https://github.com/rajasegar/nucleus-playground">Github</a>
     </div>
   );
