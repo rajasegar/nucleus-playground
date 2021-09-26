@@ -9,7 +9,6 @@ export default function AlertPanel() {
   const comp = state.components[state.selectedId];
 
   function updatePosition(pos: any) {
-    comp.props.position = pos.name;
     dispatch({
       type: "UPDATE_PROPS",
       name: "position",

@@ -19,6 +19,8 @@ import TagPanel from "./panels/Tag";
 import ParagraphPanel from "./panels/Paragraph";
 import CardPanel from "./panels/Card";
 import AccordionItemPanel from "./panels/AccordionItem";
+import BadgePanel from "./panels/Badge";
+import IconsPanel from "./panels/Icons";
 
 import StylesPanel from "./panels/StylesPanel";
 
@@ -104,6 +106,8 @@ export default function Inspector() {
         {current && current.type === "Card" && <CardPanel />}
         {current && current.type === "Tag" && <TagPanel />}
         {current && current.type === "AccordionItem" && <AccordionItemPanel />}
+        {current && current.type === "Badge" && <BadgePanel />}
+        {current && current.type === "Icons" && <IconsPanel />}
       </Box>
       <StylesPanel
         isRoot={isRoot}

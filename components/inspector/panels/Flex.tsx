@@ -8,10 +8,7 @@ export default function AlertPanel() {
   const [justify, setJustify] = useState("");
   const [align, setAlign] = useState("");
 
-  const comp = state.components[state.selectedId];
-
   function updateDirection(dir: any) {
-    comp.props.flexDirection = dir.name;
     dispatch({
       type: "UPDATE_PROPS",
       name: "flexDirection",
@@ -21,7 +18,6 @@ export default function AlertPanel() {
   }
 
   function updateJustify(j: any) {
-    comp.props.justifyContent = j.name;
     dispatch({
       type: "UPDATE_PROPS",
       name: "justifyContent",
@@ -31,7 +27,6 @@ export default function AlertPanel() {
   }
 
   function updateAlign(j: any) {
-    comp.props.alignItems = j.name;
     dispatch({
       type: "UPDATE_PROPS",
       name: "alignItems",
