@@ -1,8 +1,8 @@
-import React, { useState, useContext } from "react";
-import { Dropdown, Box } from "@freshworks/react-nucleus";
+import React, { useState, useContext, memo } from "react";
+import { Dropdown, Box, Input } from "@freshworks/react-nucleus";
 import { ComponentsContext } from "~contexts/ComponentsContext";
 
-export default function AlertPanel() {
+const AlertPanel = () => {
   const [state, dispatch]: any = useContext(ComponentsContext);
   const [level, setLevel] = useState("success");
 
@@ -31,6 +31,17 @@ export default function AlertPanel() {
 
   return (
     <Box p={2}>
+      <Input
+        label="Text"
+        value={comp.props.children}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          dispatch({
+            type: "UPDATE_PROPS",
+            name: "children",
+            value: e.target.value,
+          })
+        }
+      />
       <Dropdown
         filterKey="name"
         label="Level:"
@@ -41,4 +52,6 @@ export default function AlertPanel() {
       />
     </Box>
   );
-}
+};
+
+export default memo(AlertPanel);

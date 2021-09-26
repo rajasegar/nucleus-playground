@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { Dropdown, Box } from "@freshworks/react-nucleus";
+import React, { useState, memo } from "react";
+import { Dropdown, Box, Input } from "@freshworks/react-nucleus";
 import { useComponents } from "~hooks/index";
 
-export default function TagPanel() {
+const TagPanel = () => {
   const [state, dispatch]: any = useComponents();
   const comp = state.components[state.selectedId];
   const [variant, setVariant] = useState(comp.props.variant);
@@ -39,6 +39,17 @@ export default function TagPanel() {
 
   return (
     <Box p={2}>
+      <Input
+        label="Text"
+        value={comp.props.children}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          dispatch({
+            type: "UPDATE_PROPS",
+            name: "children",
+            value: e.target.value,
+          })
+        }
+      />
       <Dropdown
         filterKey="name"
         label="Variant:"
@@ -49,4 +60,6 @@ export default function TagPanel() {
       />
     </Box>
   );
-}
+};
+
+export default memo(TagPanel);

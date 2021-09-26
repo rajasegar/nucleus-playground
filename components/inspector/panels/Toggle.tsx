@@ -1,8 +1,8 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, memo } from "react";
 import { Dropdown, Toggle, Box } from "@freshworks/react-nucleus";
 import { ComponentsContext } from "~contexts/ComponentsContext";
 
-export default function TogglePanel() {
+const TogglePanel = () => {
   const [state, dispatch]: any = useContext(ComponentsContext);
   const comp = state.components[state.selectedId];
   const [size, setSize] = useState(comp.props.size);
@@ -51,4 +51,6 @@ export default function TogglePanel() {
       </Box>
     </Box>
   );
-}
+};
+
+export default memo(TogglePanel);

@@ -21,6 +21,9 @@ import CardPanel from "./panels/Card";
 import AccordionItemPanel from "./panels/AccordionItem";
 import BadgePanel from "./panels/Badge";
 import IconsPanel from "./panels/Icons";
+import RadioPanel from "./panels/Radio";
+import InputPanel from "./panels/Input";
+import MultiSelectDropdownPanel from "./panels/MultiSelectDropdown";
 
 import StylesPanel from "./panels/StylesPanel";
 
@@ -108,6 +111,12 @@ export default function Inspector() {
         {current && current.type === "AccordionItem" && <AccordionItemPanel />}
         {current && current.type === "Badge" && <BadgePanel />}
         {current && current.type === "Icons" && <IconsPanel />}
+        {current && current.type === "Radio" && <RadioPanel />}
+        {current && current.type === "Checkbox" && <RadioPanel />}
+        {current && current.type === "Input" && <InputPanel />}
+        {current && current.type === "MultiSelectDropdown" && (
+          <MultiSelectDropdownPanel />
+        )}
       </Box>
       <StylesPanel
         isRoot={isRoot}

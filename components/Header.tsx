@@ -1,13 +1,8 @@
 import React, { useContext, useState } from "react";
 import styled from "styled-components";
-import {
-  Button,
-  Confirmation,
-  Toggle,
-  Menu,
-  Box,
-} from "@freshworks/react-nucleus";
+import { Confirmation, Toggle, Menu, Box } from "@freshworks/react-nucleus";
 import ChevronDown from "./icons/ChevronDown";
+import ExportIcon from "./icons/Export";
 import { ComponentsContext } from "../contexts/ComponentsContext";
 import { buildParameters } from "../utils/codesandbox";
 import { generateCode } from "../utils/code";
@@ -39,6 +34,13 @@ const EditorTrigger = styled.div`
   :hover {
   cursor; pointer;
 }
+`;
+
+const GhostButton = styled.button`
+  background-color: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
 `;
 
 const EditorMenu = () => {
@@ -90,10 +92,7 @@ export default function Header() {
     const { components } = state;
     return (
       <Box mx={2}>
-        <Button
-          size="mini"
-          type="secondary"
-          inline
+        <GhostButton
           onClick={async () => {
             const code = await generateCode(components);
             const parameters = buildParameters(code);
@@ -104,8 +103,8 @@ export default function Header() {
             );
           }}
         >
-          Export code
-        </Button>
+          Export code <ExportIcon />
+        </GhostButton>
       </Box>
     );
   };
@@ -113,14 +112,9 @@ export default function Header() {
   const ClearButton = () => {
     return (
       <Box mx={2}>
-        <Button
-          type="secondary"
-          size="mini"
-          inline
-          onClick={() => setShowClearCode(true)}
-        >
+        <GhostButton onClick={() => setShowClearCode(true)}>
           Clear &times;
-        </Button>
+        </GhostButton>
         <Confirmation
           isOpen={showClearCode}
           onDismiss={() => setShowClearCode(false)}
