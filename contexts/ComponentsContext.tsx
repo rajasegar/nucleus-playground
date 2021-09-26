@@ -1,4 +1,9 @@
 import React, { createContext, useReducer } from "react";
+import produce from "immer";
+import { duplicateComponent, deleteComponent } from "~utils/recursive";
+import { generateId } from "~utils/generateId";
+import DEFAULT_PROPS from "~constants/defaultProps";
+
 const ComponentsContext: any = createContext(null);
 
 const DEFAULT_ID = "root";
@@ -18,22 +23,25 @@ const initialState = {
   showLayout: true,
 };
 
-function generateId() {
-  const hash = Math.random().toString(36).replace("0.", "");
-  return `comp-${hash}`;
-}
 const reducer = (state: any, action: any) => {
   switch (action.type) {
     case "ADD_COMPONENT":
-      const id = generateId();
-      const newState = {
-        ...state,
-        selectedId: id,
-      };
-      const newComponent = { ...action.component, id };
-      newState.components[newComponent.parent].children.push(id);
-      newState.components[id] = newComponent;
-      return newState;
+      const { payload } = action;
+      return produce(state, (draftState: any) => {
+        const id = payload.testId || generateId();
+        const { form, ...defaultProps } = DEFAULT_PROPS[payload.type] || {};
+        draftState.selectedId = id;
+        draftState.components[payload.parentName].children.push(id);
+        draftState.components[id] = {
+          id,
+          props: defaultProps || {},
+          children: [],
+          type: payload.type,
+          parent: payload.parentName,
+          rootParentType: payload.rootParentType || payload.type,
+        };
+      });
+
     case "SELECT_COMPONENT":
       return {
         ...state,
@@ -46,10 +54,19 @@ const reducer = (state: any, action: any) => {
       };
 
     case "UPDATE_PROPS":
-      const comp = { ...state.components[state.selectedId] };
-      comp.props[action.name] = action.value;
-      state.components[state.selectedId] = comp;
-      return state;
+      return produce(state, (draftState: any) => {
+        draftState.components[state.selectedId].props[action.name] =
+          action.value;
+      });
+
+    case "RESET_PROPS":
+      const componentId = state.selectedId;
+      return produce(state, (draftState: any) => {
+        const component = draftState.components[componentId];
+        const { form, ...defaultProps } = DEFAULT_PROPS[component.type] || {};
+
+        draftState.components[componentId].props = defaultProps || {};
+      });
 
     case "UPDATE_SHOW_LAYOUT":
       return {
@@ -67,21 +84,48 @@ const reducer = (state: any, action: any) => {
       return initialState;
 
     case "COPY_COMPONENT":
-      const oldComponent = state.components[state.selectedId];
-      const newId = generateId();
-      const draftState = {
-        ...state,
-        selectedId: newId,
-      };
-      const destComponent = { ...oldComponent, id: newId };
-      draftState.components[oldComponent.parent].children.push(newId);
-      draftState.components[newId] = destComponent;
-      return draftState;
+      return produce(state, (draftState: any) => {
+        const selectedComponent = draftState.components[draftState.selectedId];
+
+        if (selectedComponent.id !== DEFAULT_ID) {
+          const parentElement = draftState.components[selectedComponent.parent];
+
+          const { newId, clonedComponents } = duplicateComponent(
+            selectedComponent,
+            draftState.components
+          );
+
+          draftState.components = {
+            ...draftState.components,
+            ...clonedComponents,
+          };
+          draftState.components[parentElement.id].children.push(newId);
+        }
+      });
 
     case "REMOVE_COMPONENT":
-      delete state.components[state.selectedId];
-      state.selectedId = DEFAULT_ID;
-      return state;
+      if (state.selectedId === "root") {
+        return state;
+      }
+
+      return produce(state, (draftState: any) => {
+        let component = draftState.components[state.selectedId];
+
+        // Remove self
+        if (component && component.parent) {
+          const children = draftState.components[
+            component.parent
+          ].children.filter((id: string) => id !== state.selectedId);
+
+          draftState.components[component.parent].children = children;
+        }
+
+        draftState.selectedId = DEFAULT_ID;
+        draftState.components = deleteComponent(
+          component,
+          draftState.components
+        );
+      });
 
     default:
       throw new Error();

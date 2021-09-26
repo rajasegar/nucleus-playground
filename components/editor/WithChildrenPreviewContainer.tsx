@@ -1,7 +1,6 @@
 import React, { FunctionComponent, ComponentClass, useState } from "react";
 import { useComponents, useDropComponent } from "../../hooks";
 import ComponentPreview from "./ComponentPreview";
-import { useTheme } from "@freshworks/react-nucleus";
 import { Container } from "./PreviewWrapper";
 
 const WithChildrenPreviewContainer: React.FC<{
@@ -24,7 +23,6 @@ const WithChildrenPreviewContainer: React.FC<{
   };
   const [state, dispatch]: any = useComponents();
   const [hover, setHover] = useState(false);
-  const theme = useTheme();
 
   function selectComponent(e: any) {
     e.preventDefault();
@@ -50,7 +48,7 @@ const WithChildrenPreviewContainer: React.FC<{
   let styleProps: any = {};
   if (state.showLayout) {
     styleProps = hover
-      ? { border: `1px solid ${theme.palette.elephant}` }
+      ? { border: "1px solid #183247" }
       : { border: "1px dashed black" };
     styleProps.padding = "4px";
     styleProps.margin = "4px";
@@ -59,7 +57,6 @@ const WithChildrenPreviewContainer: React.FC<{
   return (
     <Container
       hover={hover}
-      theme={theme}
       showLayout={state.showLayout}
       onClick={(e) => selectComponent(e)}
       onMouseOver={() => setHover(true)}

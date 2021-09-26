@@ -21,17 +21,22 @@ export const useDropComponent = (
         return;
       }
 
-      const componentStructure: any = {
-        name: item.id,
-        type: item.id,
-        props: DEFAULT_PROPS[item.id] || {},
-        children: [],
-        parent: componentId,
-      };
+      // const componentStructure: any = {
+      //   name: item.id,
+      //   type: item.id,
+      //   props: DEFAULT_PROPS[item.id] || {},
+      //   children: [],
+      //   parentName: componentId,
+      //   rootParentType: item.rootParentType
+      // };
 
       dispatch({
         type: "ADD_COMPONENT",
-        component: componentStructure,
+        payload: {
+          parentName: componentId,
+          type: item.id,
+          rootParentType: item.rootParentType
+        }
       });
     },
     collect: (monitor: any) => ({

@@ -4,13 +4,11 @@ import { useComponents } from "~hooks/index";
 
 export default function ButtonPanel() {
   const [state, dispatch]: any = useComponents();
-  const [variant, setVariant] = useState("Primary");
-  const [size, setSize] = useState("Normal");
-
   const comp = state.components[state.selectedId];
+  const [variant, setVariant] = useState(comp.props.variant);
+  const [size, setSize] = useState(comp.props.size);
 
   function updateVariant(variant: any) {
-    comp.props.type = variant.name;
     dispatch({
       type: "UPDATE_PROPS",
       name: "type",
@@ -20,7 +18,6 @@ export default function ButtonPanel() {
   }
 
   function updateSize(size: any) {
-    comp.props.size = size.name;
     dispatch({
       type: "UPDATE_PROPS",
       name: "size",

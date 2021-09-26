@@ -1,11 +1,5 @@
 import React, { useContext } from "react";
-import {
-  Box,
-  Flex,
-  Button,
-  useTheme,
-  Tooltip,
-} from "@freshworks/react-nucleus";
+import { Box, Flex, Button, Tooltip } from "@freshworks/react-nucleus";
 import { ComponentsContext } from "../../contexts/ComponentsContext";
 import styled from "styled-components";
 
@@ -31,17 +25,17 @@ import StylesPanel from "./panels/StylesPanel";
 import { getSelectedComponent } from "../../core/selectors/components";
 
 const Container = styled.div`
-  background-color: ${(props) => props.theme.palette.smoke};
-  border-left: 1px solid ${(props) => props.theme.palette.E500};
+  background-color: #f3f5f7;
+  border-left: 1px solid #83a6c8;
   height: 100%;
 `;
 
 const Header = styled.div`
   font-weight: semibold;
   font-size: bold;
-  color: ${(props) => props.theme.palette.elephant};
+  color: #183247;
   padding: 8px;
-  background-color: ${(props) => props.theme.palette.E300};
+  background-color: #dff0ff;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -55,7 +49,6 @@ const Name = styled.p`
 `;
 
 export default function Inspector() {
-  const theme = useTheme();
   const [state, dispatch]: any = useContext(ComponentsContext);
 
   const current = getSelectedComponent(state);
@@ -76,9 +69,9 @@ export default function Inspector() {
   };
 
   return (
-    <Container theme={theme}>
-      <Header theme={theme}>
-        <Name>{current ? current.name : "Document"}</Name>
+    <Container>
+      <Header>
+        <Name>{isRoot ? "Document" : current.type}</Name>
       </Header>
 
       {!isRoot && (
@@ -89,7 +82,7 @@ export default function Inspector() {
           <ActionButton label="Duplicate" message="COPY_COMPONENT">
             <CopyIcon />
           </ActionButton>
-          <ActionButton label="Reset props">
+          <ActionButton label="Reset props" message="RESET_PROPS">
             <ResetIcon />
           </ActionButton>
           <ActionButton label="Remove" message="REMOVE_COMPONENT">
@@ -98,19 +91,19 @@ export default function Inspector() {
         </Flex>
       )}
       <Box>
-        {current && current.name === "Button" && <ButtonPanel />}
-        {current && current.name === "Alert" && <AlertPanel />}
-        {current && current.name === "ButtonDropdown" && (
+        {current && current.type === "Button" && <ButtonPanel />}
+        {current && current.type === "Alert" && <AlertPanel />}
+        {current && current.type === "ButtonDropdown" && (
           <ButtonDropdownPanel />
         )}
-        {current && current.name === "Toggle" && <TogglePanel />}
-        {current && current.name === "Flex" && <FlexPanel />}
-        {current && current.name === "Grid" && <GridPanel />}
-        {current && current.name === "Heading" && <HeadingPanel />}
-        {current && current.name === "Paragraph" && <ParagraphPanel />}
-        {current && current.name === "Card" && <CardPanel />}
-        {current && current.name === "Tag" && <TagPanel />}
-        {current && current.name === "AccordionItem" && <AccordionItemPanel />}
+        {current && current.type === "Toggle" && <TogglePanel />}
+        {current && current.type === "Flex" && <FlexPanel />}
+        {current && current.type === "Grid" && <GridPanel />}
+        {current && current.type === "Heading" && <HeadingPanel />}
+        {current && current.type === "Paragraph" && <ParagraphPanel />}
+        {current && current.type === "Card" && <CardPanel />}
+        {current && current.type === "Tag" && <TagPanel />}
+        {current && current.type === "AccordionItem" && <AccordionItemPanel />}
       </Box>
       <StylesPanel
         isRoot={isRoot}

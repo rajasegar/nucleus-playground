@@ -1,6 +1,5 @@
 import React, { FunctionComponent, ComponentClass, useState } from "react";
 import { useComponents } from "../../hooks";
-import { useTheme } from "@freshworks/react-nucleus";
 import { Container } from "./PreviewWrapper";
 
 const PreviewContainer: React.FC<{
@@ -17,7 +16,6 @@ const PreviewContainer: React.FC<{
 }) => {
   const [state, dispatch]: any = useComponents();
   const [hover, setHover] = useState(false);
-  const theme = useTheme();
 
   function selectComponent(e: any) {
     e.preventDefault();
@@ -38,7 +36,6 @@ const PreviewContainer: React.FC<{
   return (
     <Container
       hover={hover}
-      theme={theme}
       showLayout={state.showLayout}
       onClick={(e) => selectComponent(e)}
       onMouseOver={() => setHover(true)}
