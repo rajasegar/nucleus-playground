@@ -12,7 +12,7 @@ export default function ButtonPanel() {
     dispatch({
       type: "UPDATE_PROPS",
       name: "type",
-      value: variant.name,
+      value: variant.value,
     });
     setVariant(variant);
   }
@@ -21,7 +21,7 @@ export default function ButtonPanel() {
     dispatch({
       type: "UPDATE_PROPS",
       name: "size",
-      value: size.name,
+      value: size.value,
     });
     setSize(size);
   }
@@ -29,18 +29,19 @@ export default function ButtonPanel() {
   const buttonVariants = [
     {
       name: "Primary",
+      value: "primary",
     },
     {
       name: "Secondary",
+      value: "secondary",
     },
     {
       name: "Danger",
+      value: "danger",
     },
     {
       name: "Link",
-    },
-    {
-      name: "Disabled",
+      value: "link",
     },
   ];
 
