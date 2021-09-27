@@ -150,6 +150,12 @@ const DEFAULT_PROPS: any = {
     checked:true,
     onChange:() => {},
     children: 'Click me!'
+  },
+  'BoxedRadioGroup': {
+    
+  },
+  'BoxedRadio': {
+    
   }
 }
 

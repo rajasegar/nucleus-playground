@@ -75,6 +75,12 @@ const componentsList = [
         name: 'Radio', id: 'Radio'
     },
     {
+        name: 'BoxedRadioGroup', id: 'BoxedRadioGroup'
+    },
+    {
+        name: 'BoxedRadio', id: 'BoxedRadio'
+    },
+    {
         name: 'Tag', id: 'Tag'
     },
     {

@@ -29,6 +29,8 @@ import {
   Accordion,
   AccordionItem,
   Radio,
+  BoxedRadio,
+  BoxedRadioGroup,
 } from "@freshworks/react-nucleus";
 
 import WithChildrenPreviewContainer from "./WithChildrenPreviewContainer";
@@ -58,6 +60,8 @@ const Nucleus: any = {
   Accordion,
   AccordionItem,
   Radio,
+  BoxedRadio,
+  BoxedRadioGroup,
 };
 
 const ComponentPreview: React.FC<{
@@ -107,6 +111,8 @@ const ComponentPreview: React.FC<{
     case "Card":
     case "Box":
     case "Accordion":
+    case "BoxedRadio":
+    case "BoxedRadioGroup":
       return (
         <WithChildrenPreviewContainer
           enableVisualHelper
