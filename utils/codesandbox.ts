@@ -44,7 +44,7 @@ ReactDOM.render(<App />, rootElement);
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
-    "@freshworks/react-nucleus": "^0.2.5",
+    "@freshworks/react-nucleus": "^0.3.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-scripts": "4.0.3"
